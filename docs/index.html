@@ -163,7 +163,7 @@
         <nav class="top-bar">
 
             <ul>
-                <li class="logo" style="height: 100%; padding-top: 3px"><img src="images/divineCow2.png"/></li>
+                <li class="logo" style="height: 100%; padding-top: 3px"><img src="images/horus2.png"/></li>
                 <li class="logo">PILGRIM</li>
             </ul>
 
@@ -199,7 +199,7 @@
 <div class="homepage-text">
     <div class="top-icon">
         <a href="https://www.npmjs.com/package/@liberation-data/pilgrim" target="_blank"><img
-                src="images/divineCow3.png" alt="Homepage Top Icon"></a>
+                src="images/horus.png" alt="Homepage Top Icon"></a>
     </div>
     <div class="top-divider"></div>
     <h1>PILGRIM</h1>
@@ -223,7 +223,7 @@
         <div class="quote-pattern"></div>
         <div class="row">
             <div class="twelve columns parallax-container">
-                <h1 class="parallax-title">THE PILGRIM</h1>
+                <h1 class="parallax-title">ABOUT PILGRIM</h1>
 
                 <div class="parallax-divider">
                     <img src="images/icons/60px/white/appbar.book.open.writing.png" alt="Read More About Us">
@@ -311,114 +311,16 @@
 
             <div class="twelve columns page-content no-top-margin">
                 <ul class="testimonial-content bullet-list mobile-four no-top-margin">
-                    <li>Queries are defined by <em>you</em> in a self-contained file. Because they are self-contained, they can
-                        be modified, formatted, tested and tuned easily using the tool of your choice. I personally like <a
-                                href="https://plugins.jetbrains.com/plugin/8087-graph-database-support" target="_blank"
-                                rel="noopener">IntelliJ’s Graph Database Support</a>.
+                    <li>We can substitute another actor to fulfill a given role. If you want to change from one implementation of a class to another, you need only change a single declaration.
                     </li>
-                    <li>Queries are injected to be used in repositories with a <a href="https://github.com/liberation-data/pilgrim/blob/master/src/pilgrimInjectionDecorators.ts">decorator</a>.
+                    <li>By removing tight-coupling, we need not understand all of a problem at once, its easy to evolve our app’s design as the requirements evolve.
                     </li>
-                    <li>Rather than defining a generalised set of entities, focus on <em>use-case specific scenarios</em>
-                        that project or update a sub-graph from the underlying whole graph. You can
-                        extract generalised entities later on, however avoid <a
-                                href="https://en.wikipedia.org/wiki/Big_Design_Up_Front" target="_blank" rel="noopener">big design
-                            up-front</a>.
+                    <li>Classes and structs are easier to test, because we can supply test doubles in place of concrete collaborators (unit tests). Or the real collaborators, but configured to be used in a test scenario (integration tests).
                     </li>
+                    <li>It promotes separation of concerns with a clear contract between classes.</li>
+                    <li>It is easy to see what each class needs in order to do its job.</li>
+                    <li>We can quickly prototype an application architecture - designing the key actors by contract.</li>
                 </ul>
-            </div>
-
-
-            <div class="twelve columns page-content no-top-margin">
-                <h3 class="about-us-title">What can be mapped:</h3>
-                <p class="testimonial-content mobile-four">We can need perform type-coercion of dates, numbers or enums. We can load a set of related entities into a type. Object mapping is provided by the <a href="https://github.com/typestack/class-transformer">class transformer</a>.</p>
-            </div>
-
-            <div class="code-sample"><pre><code>export class Route {
-    readonly start: string;
-    readonly destination: string;
-    readonly metros: string[];
-    @Expose({ name: 'travel_time' })
-    readonly travelTime: number;
-
-    @Type(() =&gt; Photo)
-    readonly significantSites: Photo[];
-
-    constructor(start: string, destination: string, metros: string[], travelTime: number) {
-        this.start = start;
-        this.destination = destination;
-        this.metros = metros;
-        this.travelTime = travelTime;
-    }
-
-    /**
-     * Returns metros omitting the start and destination.
-     */
-    intermediateMetros(): string[] {
-        const result = [...this.metros];
-        result.shift();
-        result.pop();
-        return result;
-    }
-}
-            </code></pre>
-            </div>
-
-
-            <!-- TESTING -->
-            <div class="twelve columns page-content">
-                <h3 class="about-us-title">Testing:</h3>
-
-                <p class="testimonial-content mobile-four">To test transactional methods, we need to initialize the pilgrim within the
-                    test context. Here's how: </p>
-            </div>
-
-            <div class="code-sample"><pre><code>it('should return the fastest route between start and dest ', async () => {
-    return inpilgrimContext().withTransaction({rollback: true}).run(async () => {
-        const result = await request(app.getHttpServer())
-            .get('/routes/between/Pigalle/NYC')
-            .expect(HttpStatus.OK);
-
-        expect(result.body[0].travelTime).toEqual(8.5);
-    });
-});
-</code></pre>
-            </div>
-
-            <p class="testimonial-content mobile-four">Optionally, we can run integration and end-to-end tests
-                <strong>run inside a roll-back transaction</strong>. This is useful when testing against shared data and/or
-                when testing transactional database operations in parallel. Within the test it is possible to read and
-                make assertions upon uncommitted data, after which it is rolled back, restoring the database to a clean state.</p>
-
-            <div class="twelve columns page-content">
-
-                <h3 class="about-us-title">Bootsrapping All Tests:</h3>
-
-                <p class="testimonial-content mobile-four">Avoid repetition. It is possible to run all tests for a given spec with pilgrim,
-                    by adding <code>RunWithpilgrim()</code> at the top of the spec:
-                </p>
-            </div>
-
-            <div class="code-sample"><pre><code>RunWithpilgrim();
-describe('RouteRepository', () => {
-    let repo: RouteRepository;
-
-    beforeAll(async () => {
-        const app: TestingModule = await Test.createTestingModule({
-            imports: [AppModule],
-            providers: [RouteRepository],
-            controllers: []
-        }).compile();
-        repo = app.get(RouteRepository);
-    });
-
-    it('should find routes between two cities, ordered by most expedient', async () => {
-        const results = await repo.findRoutesBetween('Cavite Island', 'NYC');
-        expect(results.length).toBeGreaterThan(0);
-        expect(results[0].travelTime).toEqual(26);
-    });
-
-});
-</code></pre>
             </div>
 
 
@@ -438,53 +340,34 @@ describe('RouteRepository', () => {
 
             <div class="four columns statistics" style="width: 100%; padding-bottom:100px;">
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text">Support <span>multiple graph databases</span> - simultaneously, if you
-                        wish! Currently <a href="https://neo4j.com/"><span>Neo4j</span></a> and
-                        <a href="https://bitnine.net/agensgraph/"><span>AgensGraph</span></a>.
+                    <p class="by-numbers-text">Minimal <span>runtime-only</span> library that works with <span>pure Swift</span> (structs, classes, protocols).
                     </p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text">Support <span>distributed transactions</span> - even across different typed databases.
+                    <p class="by-numbers-text">Supports <span>Objective-C</span> derived classes, when necessary.
                     </p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text"><span>Scale</span> to hundreds and <span>thousands of transactions per second</span>,
-                        without compromising <span>architectural integrity</span>.</p>
+                    <p class="by-numbers-text"><span>Easy to install</span>. Works on iOS, Mac & Linux. <span>No compile-time weaving</span> required.</p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text">Facilitates the use of well understood <span>object-oriented</span> and
-                        functional programming <span>patterns</span>.</p>
+                    <p class="by-numbers-text"><span>Type safe</span>. No reflection or ObjC runtime - uses <span>higher-order functions</span>.</p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text">Supports implementation of <span>code that adheres to a single responsibility principle</span>
-                        (SRP).</p>
+                    <p class="by-numbers-text"><span>Lifecycles management</span>: Emits built instances with shared, weakShared, objectGraph &amp; unshared scopes.</p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text"><span>Takes care of infrastructure concerns</span>, so that you can focus
-                        on <span>making the most of your data.</span>
+                    <p class="by-numbers-text"><span>Simple and flexible</span>. For example, it is easy to have <span>multiple injectable instances</span> that conform to the <span>same protocol.</span>
                     </p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text"><span>Removes boiler plate</span> code, especially the <span>tedious and error-prone kind</span>.
-                    </p>
+                    <p class="by-numbers-text">Provides the notion of a <span><a href="https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/">composition root</a></span> in which key actors and their interactions are defined.</p>
                 </div>
                 <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text"><span>Supports streaming</span>, without back-pressure.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text"><span>Large amounts of data</span> can be managed in a <span>timely and memory efficient manner</span>..
-                    </p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text">Light-weight <span>use-case specific</span> object graph mapping <span>(OGM)</span>.
-                    </p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text"><span>Battle-tested</span> — used in high-traffic production applications.
-                    </p>
+                    <p class="by-numbers-text">Successor to <span><a href="https://github.com/appsquickly/typhoon">Typhoon</a></span> for Objective-C and based on the excellent <span><a href="https://github.com/jkolb/FieryCrucible">FieryCrucible</a></span>.</p>
                 </div>
 
-                <h2 class="page-subtitle" style="padding-top: 50px">Use <span>Pilgrim</span> in when employing the <span>object-oriented programming</span> paradigm or mixing object-oriented and <span>functional</span> styles of programming</span>.
+                <h2 class="page-subtitle" style="padding-top: 50px">Use <span>Pilgrim</span> when employing the <span>object-oriented programming</span> paradigm or mixing object-oriented and <span>functional</span> styles of programming</span>.
                 </h2>
 
             </div>
@@ -501,9 +384,7 @@ describe('RouteRepository', () => {
                 <div class="parallax-divider">
                     <img src="images/icons/60px/white/appbar.camera.png" alt="Read More About Us">
                 </div>
-                <h2 class="parallax-subtitle">Graph database koans, for typical use-cases - recommendations, social
-                    networks, etc
-                    <br/>Each presented in a pilgrim style.</h2>
+                <h2 class="parallax-subtitle">“One learns from books and example only that certain things can be done. Actual learning requires that you do those things.” -- Frank Herbert</h2>
             </div>
         </div>
     </div>
@@ -517,7 +398,7 @@ describe('RouteRepository', () => {
                 <h1 class="page-title">Quick Start</h1>
 
                 <h2 class="page-subtitle" style="padding-bottom:50px;">Have you <span>seen the light?</span><br/> Use this <span><a
-                        href="https://github.com/liberation-data/pilgrim-inspiration">starter template</a></span> to get
+                        href="https://github.com/appsquickly/pilgrim-starter">starter template</a></span> to get
                     rolling quickly!</h2>
             </div>
 
@@ -543,7 +424,7 @@ describe('RouteRepository', () => {
                                                                data-reveal-id="single-project-photo">Bootstrap</a></h4>
 
                                 <div class="portfolio-divider"></div>
-                                <p class="portfolio-categories">Configure connection details</p>
+                                <p class="portfolio-categories">Optionally, set the default assembly type.</p>
                             </div>
                         </div>
                     </li>
@@ -563,11 +444,11 @@ describe('RouteRepository', () => {
 
                             <div class="portfolio-details hide-for-small">
                                 <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-video">Define
-                                    Queries</a>
+                                    Assemblies</a>
                                 </h4>
 
                                 <div class="portfolio-divider"></div>
-                                <p class="portfolio-categories">Profile and tune for performance</p>
+                                <p class="portfolio-categories">How do the key actors interact?</p>
                             </div>
                         </div>
                     </li>
@@ -586,11 +467,10 @@ describe('RouteRepository', () => {
                                     src="images/portfolio/3.jpg" alt="Portfolio Item" class="wide-image"></a>
 
                             <div class="portfolio-details hide-for-small">
-                                <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-photo">Implement
-                                    Repositories</a></h4>
+                                <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-photo">Start Injecting</a></h4>
 
                                 <div class="portfolio-divider"></div>
-                                <p class="portfolio-categories">pilgrim takes care of boiler-plate code.</p>
+                                <p class="portfolio-categories">Inject built instances to top-level components</p>
                             </div>
                         </div>
                     </li>
@@ -599,60 +479,37 @@ describe('RouteRepository', () => {
             </div>
 
 
-            <div>
-                <h3 class="about-us-title" style="font-size:20px;">FEATURES</h3>
-            </div>
+<!--            <div>-->
+<!--                <h3 class="about-us-title" style="font-size:20px;">FEATURES</h3>-->
+<!--            </div>-->
 
-            <div class="four columns statistics" style="width:100%; padding-bottom:100px;">
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Demonstrates how to <span>bootstrap pilgrim</span>.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Shows how pilgrim <span>takes care of boiler-plate</span> code.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Demonstrates <span>declarative transaction</span> management.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Shows how to <span>implement repositories</span>, optionally with <span>streaming.</span>
-                    </p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Contains <span>graph database koans</span> for common use-cases, like
-                        recommendations, routing, social, etc.</p>
-                </div>
+<!--            <div class="four columns statistics" style="width:100%; padding-bottom:100px;">-->
+<!--                <div class="twelve columns by-numbers projects-numbers ">-->
+<!--                    <p class="by-numbers-text">Demonstrates how to <span>bootstrap Pilgrim</span>.</p>-->
+<!--                </div>-->
+<!--                <div class="twelve columns by-numbers projects-numbers ">-->
+<!--                    <p class="by-numbers-text">Shows how to <span>define assemblies</span></p>-->
+<!--                </div>-->
+<!--                <div class="twelve columns by-numbers projects-numbers ">-->
+<!--                    <p class="by-numbers-text">Demonstrates using the <span>Assembled</span> property wrapper to inject built instances.</p>-->
+<!--                </div>-->
 
-                <div>
-                    <h3 class="about-us-title" style="font-size:20px; margin-top: 30px">Running the sample</h3>
-                </div>
+<!--                <div>-->
+<!--                    <h3 class="about-us-title" style="font-size:20px; margin-top: 30px">Running the sample</h3>-->
+<!--                </div>-->
 
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Clone <a href="https://github.com/liberation-data/pilgrim-inspiration">this
-                        repository</a>, open it up in your favourite IDE or editor.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Set up either <a href="https://neo4j.com/developer/">Neo4j</a> or <a href="https://github.com/bitnine-oss/agensgraph">AgensGraph</a>.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers">
-                    <p class="by-numbers-text">First time to use a graph database? You can start testing pilgrim right now with <strong><a href="https://neo4j.com/sandbox-v2/">Neo4j sandbox</a></strong>.
-                    </p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Define a <span>.env</span> file based on <span>.env.example</span> which
-                        contains database authentication credentials.</p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Proceed to <a
-                            href="https://github.com/liberation-data/pilgrim-inspiration#exercies">the exercises
-                        here</a>.
-                    </p>
-                </div>
-                <div class="twelve columns by-numbers projects-numbers ">
-                    <p class="by-numbers-text">Start using <span>pilgrim!</span> Check out the <a
-                            href="/guide">User Guide</a>.</p>
-                </div>
+<!--                <div class="twelve columns by-numbers projects-numbers ">-->
+<!--                    <p class="by-numbers-text">Clone <a href="https://github.com/appsquickly/pilgrim-starter">this-->
+<!--                        repository</a>, open it up in Xcode, AppCode or your favorite editor.</p>-->
+<!--                </div>-->
+<!--                <div class="twelve columns by-numbers projects-numbers ">-->
+<!--                    <p class="by-numbers-text">Run the <span>pilgrim-example</span> target.</p>-->
+<!--                </div>-->
+<!--                <div class="twelve columns by-numbers projects-numbers">-->
+<!--                    <p class="by-numbers-text">Run the tests</p>-->
+<!--                </div>-->
 
-            </div>
+<!--            </div>-->
 
         </div>
     </div>
@@ -670,8 +527,7 @@ describe('RouteRepository', () => {
                 <div class="parallax-divider">
                     <img src="images/icons/60px/white/appbar.people.multiple.png" alt="Read More About Us">
                 </div>
-                <h2 class="parallax-subtitle">" . . . inspired through past experience as a Spring Framework committer,
-                    <br/>including on Spring Data Neo4j” — Jasper Blues</h2>
+                <h2 class="parallax-subtitle">Pulling construction of these components to the composition root lets your application tell an architectural story.</h2>
             </div>
         </div>
     </div>
@@ -684,8 +540,7 @@ describe('RouteRepository', () => {
             <div class="twelve columns page-content">
                 <h1 class="page-title">Meet The Contributors</h1>
 
-                <h2 class="page-subtitle" style="padding-top: 20px">The <span>order of the divine driver</span> needs you!
-                    <span>Bayesian inference</span> or other <span>necromancy</span> skills are not required. <span>Supernatural powers will be conferred</span>.</h2>
+                <h2 class="page-subtitle" style="padding-top: 20px"><span>Pilgrim</span> is a simple library, however I could still use your help in <span>maintaining it</span>!</h2>
             </div>
 
             <div class="two columns offset-by-one padding-four-columns team-member mobile-four">
@@ -696,11 +551,10 @@ describe('RouteRepository', () => {
 
                 <h3 class="our-team-title">Jasper<br>Blues</h3>
 
-                <h3 class="our-team-subtitle">Prophet</h3>
+                <h3 class="our-team-subtitle">Pilgrim</h3>
 
                 <div class="our-team-divider"></div>
-                <p class="our-team-text">Passionate about graph databases and networkscience. Self taught musician &
-                    mathematician. Open-source veteran.</p>
+                <p class="our-team-text">Mac and iOS dev @appsquickly. Graph databases and network science @liberation_data. Open-source veteran.</p>
 
                 <!--                <div class="team-hover">-->
                 <!--                    <div class="team-social-media">-->
@@ -717,7 +571,7 @@ describe('RouteRepository', () => {
 
                 <h3 class="our-team-title">I Need <br/>You!</h3>
 
-                <h3 class="our-team-subtitle">High Preistess</h3>
+                <h3 class="our-team-subtitle">Wayfarer</h3>
 
                 <div class="our-team-divider"></div>
                 <p class="our-team-text">You're a little intimidating, what with the <a
@@ -735,7 +589,7 @@ describe('RouteRepository', () => {
 
                 <h3 class="our-team-title">Not Just<br>Anybody!</h3>
 
-                <h3 class="our-team-subtitle">Monk</h3>
+                <h3 class="our-team-subtitle">Devotee</h3>
 
                 <div class="our-team-divider"></div>
                 <p class="our-team-text">Life is death. Death is Life. Teach the deserving. Teach with Passion. You will
@@ -774,7 +628,7 @@ describe('RouteRepository', () => {
 
                 <h3 class="our-team-title">I Didn't<br>Forget You!</h3>
 
-                <h3 class="our-team-subtitle">Choir Boy</h3>
+                <h3 class="our-team-subtitle">Crusader</h3>
 
                 <div class="our-team-divider"></div>
                 <p class="our-team-text">We're putting the band back together. People wonder if the Bard adds all that
@@ -784,8 +638,8 @@ describe('RouteRepository', () => {
                 <!--                </div>-->
             </div>
 
-            <h2 class="page-subtitle"><span>pilgrim</span> is sponsored by <span><a
-                    href="https://liberation-data.com">Liberation Data</a></span> and led by <br/><span><a
+            <h2 class="page-subtitle"><span>Pilgrim</span> is sponsored by <span><a
+                    href="https://appsquick.ly">AppsQuick.ly</a></span> and led by <br/><span><a
                     href="https://www.linkedin.com/in/jasper-blues-7781638/">Jasper Blues</a></span>.</h2>
 
         </div>
@@ -801,8 +655,7 @@ describe('RouteRepository', () => {
                 <div class="parallax-divider">
                     <img src="images/icons/60px/white/appbar.cogs.png" alt="Read More About Us">
                 </div>
-                <h2 class="parallax-subtitle">Support multiple graph databases. Simultaneously, if you wish!<br>Currently
-                    <span>Neo4j</span> and <span>AgensGraph</span>.</h2>
+                <h2 class="parallax-subtitle">Pilgrims are persons in motion passing through territories not their own, seeking something we might call completion, or perhaps the word clarity will do as well.</h2>
             </div>
         </div>
     </div>
@@ -839,7 +692,7 @@ describe('RouteRepository', () => {
                 <h3 class="faq-on" onclick="showhide('faq-2');">Q. What license is pilgrim released under?</h3>
 
                 <p id="faq-2" class="answer">
-                    <strong>A.</strong> pilgrim is now released under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 Software License</a>.
+                    <strong>A.</strong>Pilgrim is released under the <a href="https://en.wikipedia.org/wiki/MIT_License">MIT Software License</a>.
                 </p>
 
                 <span class="notetick"></span>
@@ -852,22 +705,6 @@ describe('RouteRepository', () => {
 
                 <span class="notetick"></span>
 
-                <h3 class="faq-on" onclick="showhide('faq-3');">Q. Do you offer commercial support?</h3>
-
-                <p id="faq-3" class="answer">
-                    <strong>A.</strong> If you like, however you probably don't need it :) pilgrim, has been deployed in highly demanding
-                    production systems and has a growing community of users. It is a free and open-source project. If you would like to submit a feature request, please <a href="https://github.com/liberation-data/pilgrim/issues">submit one on the github page</a>. If you're not sure how to do something pilgrim related, you may raise a question under the <a href="https://stackoverflow.com/questions/tagged/pilgrim">pilgrim</a> tag on StackOverflow.
-                </p>
-
-                <span class="notetick"></span>
-
-                <h3 class="faq-on" onclick="showhide('faq-4');">Q. Can pilgrim support multi-tenanted Neo4j v4 applications ?</h3>
-
-                <p id="faq-4" class="answer">
-                    <strong>A.</strong> Yes it can, you can use pilgrim to access multiple databases under the one code-base. These can be registered up-front or dynamically.
-                </p>
-
-                <span class="notetick"></span>
 
             </div>
         </div>
@@ -876,14 +713,14 @@ describe('RouteRepository', () => {
         <div class="footer-container">
             <div class="row">
                 <div class="four columns first-column hide-for-small">
-                    <p class="footer-left">ALL RIGHTS RESERVED 2019</p>
+                    <p class="footer-left">ALL RIGHTS RESERVED 2020</p>
                 </div>
                 <div class="four columns middle-column back-to-top hide-for-small">
                     <a href="#homepage"><img src="images/back-to-top.png" alt="Go Back To Top"></a>
                 </div>
                 <div class="four columns mobile-four">
-                    <p class="footer-right"><span>pilgrim</span> is sponsored and led by <a
-                            href="https://liberation-data.com">Liberation Data</a>
+                    <p class="footer-right"><span>Pilgrim</span> is sponsored and led by <a
+                            href="https://appsquick.ly">AppsQuick.ly</a>
                     </p>
                 </div>
             </div>
@@ -964,7 +801,7 @@ describe('RouteRepository', () => {
                     thumbnail_navigation: 0,			// Thumbnail navigation
                     slides: [			// Slideshow Images
                         {
-                            image: 'images/homepage-slideshow/1.jpg',
+                            image: 'images/homepage-slideshow/11.jpg',
                             title: 'Pilgrim - Dependency Injection for Swift'
                         },
 

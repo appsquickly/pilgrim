@@ -21,18 +21,19 @@ Here's how to get up and running with Pilgrim in two minutes.
 
 ## Bootstrap 
 
-Bootstrap the default assembly type as early as possible, for example in main.swift: 
+(Optionally) bootstrap the default assembly type when the app launches, for example in main.swift: 
 
 ```swift
 class MyApplication: UIApplication {
 
     override init() {
-        PilgrimAssembly.defaultFactory = QuestAssembly.self
+        AssemblyHolder.defaultAssemblyType = QuestAssembly.self
     }
     
 }
 UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, "MyApplication", "MyAppDelegate")
 ```
+This step allows using the `Assembled` property wrapper without explicitly specifying an assembly type. 
 
 ## Define Assemblies 
 
@@ -70,6 +71,8 @@ class QuestAssembly: PilgrimAssembly {
   }
 }
 ```
+
+Note that you're binding the function that will emit the built instance to the type, not the return value (don't include brackets). 
 
 ## Inject Assembled Instances
 

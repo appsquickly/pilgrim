@@ -136,8 +136,8 @@ a.facebook-header:hover, a.twitter-header:hover {
 
 .top-icon {
     width: 120px;
-    height: 120px;
-    margin: 0 auto;
+    /*height: 120px;*/
+    margin: 10px auto;
     padding: 3px;
     /*border: 3px #ffffff solid;*/
     /*-webkit-border-radius: 50px;*/
@@ -165,7 +165,7 @@ a.facebook-header:hover, a.twitter-header:hover {
     height: 2px;
     margin: 0 auto;
     background: #fff;
-    margin-top: 20px;
+    margin-top: 0px;
     margin-bottom: 10px;
 }
 
