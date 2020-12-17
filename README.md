@@ -12,7 +12,7 @@ Pilgrim is a dependency injection library for Swift with the following features:
 * Provides the notion of a [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/) in which the key actors, and their interactions in an application architecture are defined as a graph. This is where your app's architectural story is told. Assembled instances can then be injected using property wrappers. 
 * Successor to [Typhoon](https://github.com/appsquickly/typhoon), for Objective-C and based on the excellent [FieryCrucible](https://github.com/jkolb/FieryCrucible) by [jkolb](https://github.com/jkolb).
 
-You can use Pilgrim in applications and libraries that employ the object-oriented programming paradigm or that mix object-oriented and functional styles of programming. 
+You can use Pilgrim in apps that employ the object-oriented programming paradigm or that mix object-oriented and functional styles.
 
 ---------------------------------------
 
