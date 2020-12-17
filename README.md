@@ -195,4 +195,4 @@ Pilgrim is sponsored and led by <a href="https://appsquick.ly">AppsQuick.ly</a> 
 
 ## License
 
-Copyright (c) 2020 Liberation Data
+Copyright (c) 2020 Pilgrim Contributors
