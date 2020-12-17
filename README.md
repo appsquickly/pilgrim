@@ -1,3 +1,4 @@
+<a href="https://pilgrim.ph"> ![PilgrimSplash](https://pilgrim.ph/splash.jpg)</a>
 # <a href="https://pilgrim.ph">pilgrim.ph</a>
 
 Pilgrim is a dependency injection library for Swift with the following features:
