@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]>
+<!-->
+<html class="no-js" lang="en"><!--<![endif]-->
+<head>
+    <meta charset="utf-8"/>
+
+
+    <title>PILGRIM - Dependency Injection for Swift</title>
+    <meta name="description" content="PILGRIM - Dependency Injection for Swift">
+
+    <!-- mobile stuff -->
+    <meta name="viewport" content="width=device-width"/>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes"/>
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144x144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="shortcut icon" href="favicon.ico"/>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/zenburn.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <!-- This script prevents links from opening in Mobile Safari. https://gist.github.com/1042026 -->
+    <script>(function (a, b, c) {
+        if (c in b && b[c]) {
+            var d, e = a.location, f = /^(a|html)$/i;
+            a.addEventListener("click", function (a) {
+                d = a.target;
+                while (!f.test(d.nodeName)) d = d.parentNode;
+                "href" in d && (d.href.indexOf("http") || ~d.href.indexOf(e.host)) && (a.preventDefault(), e.href = d.href)
+            }, !1)
+        }
+    })(document, window.navigator, "standalone")</script>
+
+    <!-- Included CSS Files -->
+    <link rel="stylesheet" href="style.css?v=1.0.1">
+    <link rel="stylesheet" href="stylesheets/portfolio.css">
+    <link rel="stylesheet" href="stylesheets/foundation.css">
+    <link rel="stylesheet" href="stylesheets/normalize.css">
+    <link rel="stylesheet" href="stylesheets/supersized.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/supersized.shutter.css" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/prettyPhoto.css" type="text/css" media="screen"
+          title="prettyPhoto main stylesheet"/>
+
+    <!-- Google Web Fonts -->
+    <link href='stylesheets/fonts.css' rel='stylesheet' type='text/css'>
+
+    <!-- Included JS Files -->
+    <script src="javascripts/modernizr.foundation.js"></script>
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/custom.js"></script>
+    <script src="javascripts/raphael.js" type="text/javascript"></script>
+    <script src="javascripts/init.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.content-container').css("margin-top", $(window).height());
+
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+
+            var windowsize = $(window).width();
+
+            $(window).resize(function () {
+                var windowsize = $(window).width();
+            });
+
+            if (windowsize > 1024) {
+                //if the window is greater than 1024px wide then load one orbit settings
+                //.parallax(xPosition, speedFactor, outerHeight) options:
+                //xPosition - Horizontal position of the element
+                //inertia - speed to move relative to vertical scroll. Example: 0.1 is one tenth the speed of scrolling, 2 is twice the speed of scrolling
+                //outerHeight (true/false) - Whether or not jQuery should use it's outerHeight option to determine when a section is in the viewport
+                $('.parallax-two').parallax("50%", 0.5);
+                $('.parallax-three').parallax("50%", 0.5);
+                $('.parallax-contributors').parallax("50%", 0.5);
+                $('.parallax-four').parallax("50%", 0.5);
+                $('.parallax-five').parallax("50%", 0.5);
+                $('.parallax-six').parallax("50%", 0.5);
+            }
+
+        })
+    </script>
+
+    <!-- Hook up the Loader -->
+    <script type="text/javascript">
+        $(window).load(function () {
+            $("#loading").fadeOut("1000", function () {
+                // Animation complete
+                $('#loading img').css("display", "none");
+                $('#loading').css("display", "none");
+                $('#loading').css("background", "none");
+                $('#loading').css("width", "0");
+                $('#loading').css("height", "0");
+            });
+        });
+    </script>
+
+    <style>
+        h3.faq-on {
+            border-radius: 8px 8px 0 0;
+            color: #38361E;
+            margin-bottom: 0;
+            text-decoration: none;
+            background: none repeat scroll 0 0 #FFFFFF;
+            padding: 20px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        span.notetick {
+            display: block;
+            height: 40px;
+
+        }
+
+        p.answer {
+            background: none repeat scroll 0 0 #FFFFFF;
+            border-radius: 0 0 8px 8px;
+            margin: 0 !important;
+            padding: 0 20px 20px;
+            display: none;
+        }
+    </style>
+    <script>
+
+        function showhide(id) {
+            $('#' + id).slideToggle();
+        }
+
+    </script>
+</head>
+<body id="homepage">
+
+<!-- Loader -->
+<div id="loading">
+    <img src="images/loader.gif" alt="Website Loader"/>
+</div>
+
+<!-- Slideshow Pattern & Overlay -->
+<div class="slideshow-pattern"></div>
+<div class="slideshow-overlay"></div>
+
+<div class="triangle-top"></div>
+<div class="triangle-bottom"></div>
+
+<div class="header-container">
+
+    <a href="https://github.com/appsquickly/pilgrim"><img style="position: absolute; top: 0; right: 0; border: 0; width: 149px" src="images/ribbon.png" alt="Fork me on GitHub"></a>
+
+    <!-- Basic Needs -->
+    <div class="row">
+
+        <nav class="top-bar">
+
+            <ul>
+                <li class="logo" style="height: 100%; padding-top: 3px"><img src="images/divineCow2.png"/></li>
+                <li class="logo">PILGRIM</li>
+            </ul>
+
+            <section class="hide-for-small">
+                <ul class="right">
+                    <li><a href="#homepage">Home</a></li>
+                    <li><a href="#about-us">Description</a></li>
+                    <li><a href="#portfolio">Quick Start</a></li>
+                    <li><a href="#our-team">The Community</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="/guide">User Guide</a>
+                    </li>
+                    <!--                    <li><a href="docs/index.html">API</a>-->
+                    </li>
+                </ul>
+            </section>
+
+            <select class="responsive-nav show-for-small" onchange="moveTo(this.value)" onFocus="moveTo(this.value)"
+                    style="width: 200px; position: absolute; right: 140px">
+                <option value="" selected="">Main Navigation</option>
+                <option value="#homepage">Home</option>
+                <option value="#about-us">Description</option>
+                <option value="#portfolio">Quick Start</option>
+                <option value="#our-team">The Community</option>
+                <option value="#faq">FAQ</option>
+                <option value="/guide">User Guide
+                </option>
+            </select>
+        </nav>
+    </div>
+</div>
+
+<div class="homepage-text">
+    <div class="top-icon">
+        <a href="https://www.npmjs.com/package/@liberation-data/pilgrim" target="_blank"><img
+                src="images/divineCow3.png" alt="Homepage Top Icon"></a>
+    </div>
+    <div class="top-divider"></div>
+    <h1>PILGRIM</h1>
+
+    <div class="bottom-divider"></div>
+    <h2>Dependency Injection for Swift</h2>
+
+    <h3>Community project by <a style="color: #ffffff" href="https://appsquick.ly">AppsQuick.ly.</a></h3>
+
+<!--    <div class="bottom-icon">-->
+<!--        <a href="#about-us"><img src="images/homepage-text-bottom-icon.png" alt="Homepage Bottom Icon"></a>-->
+<!--    </div>-->
+</div>
+
+<!-- Main Content Starts HERE -->
+<div class="content-container">
+
+
+    <!-- Parallax Two - Content -->
+    <div class="parallax-two">
+        <div class="quote-pattern"></div>
+        <div class="row">
+            <div class="twelve columns parallax-container">
+                <h1 class="parallax-title">THE PILGRIM</h1>
+
+                <div class="parallax-divider">
+                    <img src="images/icons/60px/white/appbar.book.open.writing.png" alt="Read More About Us">
+                </div>
+                <h2 class="parallax-subtitle">Get Ready! <br/>The wise man does not rest by the roadside inns.
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Us Page -->
+    <ul class="bullet-list"></ul>
+    <div class="page-container pattern-1" id="about-us">
+
+        <div class="row">
+
+            <div class="twelve columns page-content">
+                <h1 class="page-title">Description</h1>
+            </div>
+            <img src="images/about-us/1.png" alt="holy cow" style="padding-top: 10px">
+
+            <h2 class="page-subtitle">What is <span>Dependency Injection</span>?</h2>
+
+            <div class="twelve columns page-content">
+                <p class="testimonial-content mobile-four">
+                    Many people have trouble getting the hang of dependency injection, at first. I think part of the problem is that it is actually so simple that we’re inclined to look for something more complicated. With that in mind, imagine that you’re writing an app that gives weather reports. You need a cloud-service (excuse the pun) to provide the data. At first, you go for a free weather report provider, but in future you’d like to integrate a weather service with better accuracy and more features. So like a good object-oriented developer, you make a WeatherClient protocol and back it initially with an implementation based on the free, online data provider.</p>
+            </div>
+
+            <!--Without DI -->
+            <div class="twelve columns page-content">
+                <h3 class="about-us-title">Without Dependency Injection</h3>
+                <p class="testimonial-content mobile-four">It might look like this:</p>
+
+                <div class="code-sample"><pre><code>class WeatherReportController : UIViewController {
+  let weatherClient = WeatherReportClient(key: myApiKey)
+}
+                </code></pre>
+                </div>
+
+                <p class="testimonial-content mobile-four">A problem with this approach is if you wanted to change to another weather client implementation you’d have to go and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure to pass in the correct initialization parameters. A common approach is to have a centrally configured singleton:
+                </p>
+
+                <div class="code-sample"><pre><code>class WeatherReportController : UIViewController {
+  let weatherClient = WeatherReportClient.shared
+}
+                </code></pre>
+                </div>
+            </div>
+
+            <p class="testimonial-content mobile-four">
+                This gets around the problem of having a single point of truth for configuration, but in order to test the WeatherReportController, you now have to test its collaborating class (the weather client) at the same time. This can get tricky, especially as your application gets more complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on… Not much fun! </p>
+
+            <div class="eight columns mobile-four hide-for-760" style="display:none;">
+                <div id="diagram" class="" style="display:none;"></div>
+            </div>
+
+            <!-- Enter Dependency Injection -->
+            <div class="twelve columns page-content">
+                <h3 class="about-us-title">Enter Dependency Injection:</h3>
+                <p class="testimonial-content mobile-four">Rather than seek out collaborators, they are provided externally.</p>
+
+                <div class="code-sample"><pre><code>class WeatherReportController : UIViewController {
+  private(set) var weatherClient: WeatherReportProvider
+  init(client: weatherClient) {
+    self.weatherClient = client
+  }
+}
+                </code></pre>
+                </div>
+
+            </div>
+
+            <!-- IS THAT IT? -->
+            <div class="twelve columns page-content" style="margin-top: 0px">
+                <h3 class="about-us-title">Is that it!?</h3>
+               <p class="testimonial-content mobile-four" style="margin-top: 10px">More or less, but let‘s look at what happens when we start to apply this approach. If we keep on applying the approach, we arrive at a module where the key actors, their lifecycles and their interactions are defined. This is known as the assembly or <a href="https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root">composition root</a>.</p>
+               <p class="testimonial-content mobile-four">Pulling construction of these components to the composition root lets your application tell an architectural story. When the key actors are pulled up into an assembly the app's configuration is no longer fragmented, duplicated or tightly coupled. We can have the benefits of singletons, without the drawbacks.</p>
+
+            </div>
+
+            <!-- Benefits of Dependency Injection -->
+            <div class="twelve columns page-content" style="margin-top: 40px">
+                <h3 class="about-us-title">Benefits of Dependency Injection:</h3>
+
+
+            <div class="twelve columns page-content no-top-margin">
+                <ul class="testimonial-content bullet-list mobile-four no-top-margin">
+                    <li>Queries are defined by <em>you</em> in a self-contained file. Because they are self-contained, they can
+                        be modified, formatted, tested and tuned easily using the tool of your choice. I personally like <a
+                                href="https://plugins.jetbrains.com/plugin/8087-graph-database-support" target="_blank"
+                                rel="noopener">IntelliJ’s Graph Database Support</a>.
+                    </li>
+                    <li>Queries are injected to be used in repositories with a <a href="https://github.com/liberation-data/pilgrim/blob/master/src/pilgrimInjectionDecorators.ts">decorator</a>.
+                    </li>
+                    <li>Rather than defining a generalised set of entities, focus on <em>use-case specific scenarios</em>
+                        that project or update a sub-graph from the underlying whole graph. You can
+                        extract generalised entities later on, however avoid <a
+                                href="https://en.wikipedia.org/wiki/Big_Design_Up_Front" target="_blank" rel="noopener">big design
+                            up-front</a>.
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="twelve columns page-content no-top-margin">
+                <h3 class="about-us-title">What can be mapped:</h3>
+                <p class="testimonial-content mobile-four">We can need perform type-coercion of dates, numbers or enums. We can load a set of related entities into a type. Object mapping is provided by the <a href="https://github.com/typestack/class-transformer">class transformer</a>.</p>
+            </div>
+
+            <div class="code-sample"><pre><code>export class Route {
+    readonly start: string;
+    readonly destination: string;
+    readonly metros: string[];
+    @Expose({ name: 'travel_time' })
+    readonly travelTime: number;
+
+    @Type(() =&gt; Photo)
+    readonly significantSites: Photo[];
+
+    constructor(start: string, destination: string, metros: string[], travelTime: number) {
+        this.start = start;
+        this.destination = destination;
+        this.metros = metros;
+        this.travelTime = travelTime;
+    }
+
+    /**
+     * Returns metros omitting the start and destination.
+     */
+    intermediateMetros(): string[] {
+        const result = [...this.metros];
+        result.shift();
+        result.pop();
+        return result;
+    }
+}
+            </code></pre>
+            </div>
+
+
+            <!-- TESTING -->
+            <div class="twelve columns page-content">
+                <h3 class="about-us-title">Testing:</h3>
+
+                <p class="testimonial-content mobile-four">To test transactional methods, we need to initialize the pilgrim within the
+                    test context. Here's how: </p>
+            </div>
+
+            <div class="code-sample"><pre><code>it('should return the fastest route between start and dest ', async () => {
+    return inpilgrimContext().withTransaction({rollback: true}).run(async () => {
+        const result = await request(app.getHttpServer())
+            .get('/routes/between/Pigalle/NYC')
+            .expect(HttpStatus.OK);
+
+        expect(result.body[0].travelTime).toEqual(8.5);
+    });
+});
+</code></pre>
+            </div>
+
+            <p class="testimonial-content mobile-four">Optionally, we can run integration and end-to-end tests
+                <strong>run inside a roll-back transaction</strong>. This is useful when testing against shared data and/or
+                when testing transactional database operations in parallel. Within the test it is possible to read and
+                make assertions upon uncommitted data, after which it is rolled back, restoring the database to a clean state.</p>
+
+            <div class="twelve columns page-content">
+
+                <h3 class="about-us-title">Bootsrapping All Tests:</h3>
+
+                <p class="testimonial-content mobile-four">Avoid repetition. It is possible to run all tests for a given spec with pilgrim,
+                    by adding <code>RunWithpilgrim()</code> at the top of the spec:
+                </p>
+            </div>
+
+            <div class="code-sample"><pre><code>RunWithpilgrim();
+describe('RouteRepository', () => {
+    let repo: RouteRepository;
+
+    beforeAll(async () => {
+        const app: TestingModule = await Test.createTestingModule({
+            imports: [AppModule],
+            providers: [RouteRepository],
+            controllers: []
+        }).compile();
+        repo = app.get(RouteRepository);
+    });
+
+    it('should find routes between two cities, ordered by most expedient', async () => {
+        const results = await repo.findRoutesBetween('Cavite Island', 'NYC');
+        expect(results.length).toBeGreaterThan(0);
+        expect(results[0].travelTime).toEqual(26);
+    });
+
+});
+</code></pre>
+            </div>
+
+
+            <!---- FEATURES AND DESIGN GOALS -->
+            <div class="twelve columns page-section hide-for-760" id="features">
+
+
+                <h1 class="page-title">Design Goals &amp; Features</h1>
+
+            </div>
+
+            <div class="twelve columns hide-for-760">
+                <div class="section-divider">
+                    <img src="images/crown.png" alt="Features">
+                </div>
+            </div>
+
+            <div class="four columns statistics" style="width: 100%; padding-bottom:100px;">
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text">Support <span>multiple graph databases</span> - simultaneously, if you
+                        wish! Currently <a href="https://neo4j.com/"><span>Neo4j</span></a> and
+                        <a href="https://bitnine.net/agensgraph/"><span>AgensGraph</span></a>.
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text">Support <span>distributed transactions</span> - even across different typed databases.
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text"><span>Scale</span> to hundreds and <span>thousands of transactions per second</span>,
+                        without compromising <span>architectural integrity</span>.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text">Facilitates the use of well understood <span>object-oriented</span> and
+                        functional programming <span>patterns</span>.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text">Supports implementation of <span>code that adheres to a single responsibility principle</span>
+                        (SRP).</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text"><span>Takes care of infrastructure concerns</span>, so that you can focus
+                        on <span>making the most of your data.</span>
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text"><span>Removes boiler plate</span> code, especially the <span>tedious and error-prone kind</span>.
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text"><span>Supports streaming</span>, without back-pressure.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text"><span>Large amounts of data</span> can be managed in a <span>timely and memory efficient manner</span>..
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text">Light-weight <span>use-case specific</span> object graph mapping <span>(OGM)</span>.
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text"><span>Battle-tested</span> — used in high-traffic production applications.
+                    </p>
+                </div>
+
+                <h2 class="page-subtitle" style="padding-top: 50px">Use <span>Pilgrim</span> in when employing the <span>object-oriented programming</span> paradigm or mixing object-oriented and <span>functional</span> styles of programming</span>.
+                </h2>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Parallax Three - Content -->
+    <div class="parallax-three">
+        <div class="quote-pattern"></div>
+        <div class="row">
+            <div class="twelve columns parallax-container">
+                <h1 class="parallax-title">STARTER TEMPLATE</h1>
+
+                <div class="parallax-divider">
+                    <img src="images/icons/60px/white/appbar.camera.png" alt="Read More About Us">
+                </div>
+                <h2 class="parallax-subtitle">Graph database koans, for typical use-cases - recommendations, social
+                    networks, etc
+                    <br/>Each presented in a pilgrim style.</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sample app Page -->
+    <div class="page-container pattern-2" id="portfolio">
+
+        <div class="row">
+
+            <div class="twelve columns page-content">
+                <h1 class="page-title">Quick Start</h1>
+
+                <h2 class="page-subtitle" style="padding-bottom:50px;">Have you <span>seen the light?</span><br/> Use this <span><a
+                        href="https://github.com/liberation-data/pilgrim-inspiration">starter template</a></span> to get
+                    rolling quickly!</h2>
+            </div>
+
+
+            <div class="twelve columns portfolio">
+                <ul class="ourHolder">
+                    <li class="four columns item ">
+                        <div class="portfolio-item">
+                            <div class="portfolio-cat-image">
+                                <img src="images/icons/40px/white/96.png" alt="Portfolio Category Image">
+                            </div>
+                            <div class="portfolio-hover-details hide-for-small">
+                                <div class="open-portfolio">
+                                    <a href="images/portfolio/1.jpg" class="open-portfolio-large" rel="prettyPhoto"></a>
+
+                                </div>
+                            </div>
+                            <a href="images/portfolio/large/1.jpg" class="photo-link" rel="prettyPhoto"><img
+                                    src="images/portfolio/1.jpg" alt="Portfolio Item" class="wide-image"></a>
+
+                            <div class="portfolio-details hide-for-small">
+                                <h4 class="portfolio-title"><a href="#"
+                                                               data-reveal-id="single-project-photo">Bootstrap</a></h4>
+
+                                <div class="portfolio-divider"></div>
+                                <p class="portfolio-categories">Configure connection details</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="four columns item ">
+                        <div class="portfolio-item">
+                            <div class="portfolio-cat-image">
+                                <img src="images/icons/40px/white/96.png" alt="Portfolio Category Image">
+                            </div>
+                            <div class="portfolio-hover-details hide-for-small">
+                                <div class="open-portfolio">
+                                    <a href="images/portfolio/2.jpg" class="open-portfolio-large" rel="prettyPhoto"></a>
+
+                                </div>
+                            </div>
+                            <a href="images/portfolio/large/2.jpg" class="photo-link" rel="prettyPhoto"><img
+                                    src="images/portfolio/2.jpg" alt="Portfolio Item" class="wide-image"></a>
+
+                            <div class="portfolio-details hide-for-small">
+                                <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-video">Define
+                                    Queries</a>
+                                </h4>
+
+                                <div class="portfolio-divider"></div>
+                                <p class="portfolio-categories">Profile and tune for performance</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="four columns item ">
+                        <div class="portfolio-item">
+                            <div class="portfolio-cat-image">
+                                <img src="images/icons/40px/white/96.png" alt="Portfolio Category Image">
+                            </div>
+                            <div class="portfolio-hover-details hide-for-small">
+                                <div class="open-portfolio">
+                                    <a href="images/portfolio/3.jpg" class="open-portfolio-large" rel="prettyPhoto"></a>
+
+                                </div>
+                            </div>
+                            <a href="images/portfolio/large/3.jpg" class="photo-link" rel="prettyPhoto"><img
+                                    src="images/portfolio/3.jpg" alt="Portfolio Item" class="wide-image"></a>
+
+                            <div class="portfolio-details hide-for-small">
+                                <h4 class="portfolio-title"><a href="#" data-reveal-id="single-project-photo">Implement
+                                    Repositories</a></h4>
+
+                                <div class="portfolio-divider"></div>
+                                <p class="portfolio-categories">pilgrim takes care of boiler-plate code.</p>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div>
+                <h3 class="about-us-title" style="font-size:20px;">FEATURES</h3>
+            </div>
+
+            <div class="four columns statistics" style="width:100%; padding-bottom:100px;">
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Demonstrates how to <span>bootstrap pilgrim</span>.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Shows how pilgrim <span>takes care of boiler-plate</span> code.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Demonstrates <span>declarative transaction</span> management.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Shows how to <span>implement repositories</span>, optionally with <span>streaming.</span>
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Contains <span>graph database koans</span> for common use-cases, like
+                        recommendations, routing, social, etc.</p>
+                </div>
+
+                <div>
+                    <h3 class="about-us-title" style="font-size:20px; margin-top: 30px">Running the sample</h3>
+                </div>
+
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Clone <a href="https://github.com/liberation-data/pilgrim-inspiration">this
+                        repository</a>, open it up in your favourite IDE or editor.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Set up either <a href="https://neo4j.com/developer/">Neo4j</a> or <a href="https://github.com/bitnine-oss/agensgraph">AgensGraph</a>.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers">
+                    <p class="by-numbers-text">First time to use a graph database? You can start testing pilgrim right now with <strong><a href="https://neo4j.com/sandbox-v2/">Neo4j sandbox</a></strong>.
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Define a <span>.env</span> file based on <span>.env.example</span> which
+                        contains database authentication credentials.</p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Proceed to <a
+                            href="https://github.com/liberation-data/pilgrim-inspiration#exercies">the exercises
+                        here</a>.
+                    </p>
+                </div>
+                <div class="twelve columns by-numbers projects-numbers ">
+                    <p class="by-numbers-text">Start using <span>pilgrim!</span> Check out the <a
+                            href="/guide">User Guide</a>.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- Placing the contributors here. -->
+    <!-- Parallax One - Content -->
+
+    <div class="parallax-contributors">
+        <div class="quote-pattern"></div>
+        <div class="row">
+            <div class="twelve columns parallax-container">
+                <h1 class="parallax-title">WHO IS BEHIND IT?</h1>
+
+                <div class="parallax-divider">
+                    <img src="images/icons/60px/white/appbar.people.multiple.png" alt="Read More About Us">
+                </div>
+                <h2 class="parallax-subtitle">" . . . inspired through past experience as a Spring Framework committer,
+                    <br/>including on Spring Data Neo4j” — Jasper Blues</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Team Page -->
+    <div class="page-container pattern-2" id="our-team" style="padding-bottom:100px;">
+
+        <div class="row">
+
+            <div class="twelve columns page-content">
+                <h1 class="page-title">Meet The Contributors</h1>
+
+                <h2 class="page-subtitle" style="padding-top: 20px">The <span>order of the divine driver</span> needs you!
+                    <span>Bayesian inference</span> or other <span>necromancy</span> skills are not required. <span>Supernatural powers will be conferred</span>.</h2>
+            </div>
+
+            <div class="two columns offset-by-one padding-four-columns team-member mobile-four">
+
+                <div class="image-cropper">
+                    <img src="images/team/team-1.jpg" alt="">
+                </div>
+
+                <h3 class="our-team-title">Jasper<br>Blues</h3>
+
+                <h3 class="our-team-subtitle">Prophet</h3>
+
+                <div class="our-team-divider"></div>
+                <p class="our-team-text">Passionate about graph databases and networkscience. Self taught musician &
+                    mathematician. Open-source veteran.</p>
+
+                <!--                <div class="team-hover">-->
+                <!--                    <div class="team-social-media">-->
+                <!--                        <a href="https://twitter.com/doctor_cerulean" class="team-twitter"></a>-->
+                <!--                        <a href="https://ph.linkedin.com/pub/jasper-blues/8/163/778" class="team-linkedin"></a>-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+            <div class="two columns padding-four-columns team-member mobile-four">
+                <div class="image-cropper">
+                    <img src="images/team/team-priestess.jpg" alt="">
+                </div>
+
+                <h3 class="our-team-title">I Need <br/>You!</h3>
+
+                <h3 class="our-team-subtitle">High Preistess</h3>
+
+                <div class="our-team-divider"></div>
+                <p class="our-team-text">You're a little intimidating, what with the <a
+                        href="https://dictionary.cambridge.org/dictionary/english/rbf">RBF</a> and those arcane spells
+                    and all. And you're way smarter than me. You're on my team!</p>
+
+                <!--                <div class="team-hover">-->
+                <!--                </div>-->
+            </div>
+
+            <div class="two columns padding-four-columns team-member mobile-four">
+                <div class="image-cropper">
+                    <img src="images/team/team-monk.jpg" alt="">
+                </div>
+
+                <h3 class="our-team-title">Not Just<br>Anybody!</h3>
+
+                <h3 class="our-team-subtitle">Monk</h3>
+
+                <div class="our-team-divider"></div>
+                <p class="our-team-text">Life is death. Death is Life. Teach the deserving. Teach with Passion. You will
+                    guide us.</p>
+
+                <!--                <div class="team-hover">-->
+                <!--                    <div class="team-social-media">-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+
+            <div class="two columns padding-four-columns team-member mobile-four">
+                <div class="image-cropper">
+                    <img src="images/team/team-shaman.jpg" alt="">
+                </div>
+
+                <h3 class="our-team-title">And You<br>Too!</h3>
+
+                <h3 class="our-team-subtitle">Shaman</h3>
+
+                <div class="our-team-divider"></div>
+                <p class="our-team-text">In all honesty, you're a pretty freaky guy. None of your jokes make any sense.
+                    But you get stuff done. We need you and you got the job, Shaman.</p>
+
+                <!--                <div class="team-hover">-->
+                <!--                    <div class="team-social-media">-->
+                <!--                    </div>-->
+                <!--                </div>-->
+            </div>
+
+            <div class="two columns padding-four-columns team-member mobile-four">
+                <div class="image-cropper">
+                    <img src="images/team/team-bard.jpg" alt="">
+                </div>
+
+                <h3 class="our-team-title">I Didn't<br>Forget You!</h3>
+
+                <h3 class="our-team-subtitle">Choir Boy</h3>
+
+                <div class="our-team-divider"></div>
+                <p class="our-team-text">We're putting the band back together. People wonder if the Bard adds all that
+                    much. You and I know that none of this would be possible without you. </p>
+
+                <!--                <div class="team-hover">-->
+                <!--                </div>-->
+            </div>
+
+            <h2 class="page-subtitle"><span>pilgrim</span> is sponsored by <span><a
+                    href="https://liberation-data.com">Liberation Data</a></span> and led by <br/><span><a
+                    href="https://www.linkedin.com/in/jasper-blues-7781638/">Jasper Blues</a></span>.</h2>
+
+        </div>
+    </div>
+
+    <!-- Parallax Four - Content -->
+    <div class="parallax-four">
+        <div class="quote-pattern"></div>
+        <div class="row">
+            <div class="twelve columns parallax-container">
+                <h1 class="parallax-title">It’s Q&amp;A Time!</h1>
+
+                <div class="parallax-divider">
+                    <img src="images/icons/60px/white/appbar.cogs.png" alt="Read More About Us">
+                </div>
+                <h2 class="parallax-subtitle">Support multiple graph databases. Simultaneously, if you wish!<br>Currently
+                    <span>Neo4j</span> and <span>AgensGraph</span>.</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Page -->
+    <div class="page-container pattern-1" id="faq">
+
+        <div class="row">
+            <div class="twelve columns page-content" style="padding-bottom:50px;">
+                <h1 class="page-title">Frequently Asked Questions</h1>
+
+                <h2 class="page-subtitle">Something’s not clear? <span>Check Below!</span><br>We tried to
+                    <span>answer</span>
+                    any question you might have.</h2>
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="twelve columns page-content">
+
+
+                <h3 class="faq-on" onclick="showhide('faq-1');">Q. Can I ask questions here?</h3>
+
+                <p id="faq-1" class="answer">
+                    <strong>A.</strong> Yes. <br/><br/>
+                    Please send me a tweet <a href="https://twitter.com/doctor_cerulean">@doctor_cerulean</a> and I will
+                    answer as best as I can.
+                </p>
+
+                <span class="notetick"></span>
+
+                <h3 class="faq-on" onclick="showhide('faq-2');">Q. What license is pilgrim released under?</h3>
+
+                <p id="faq-2" class="answer">
+                    <strong>A.</strong> pilgrim is now released under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache 2.0 Software License</a>.
+                </p>
+
+                <span class="notetick"></span>
+
+                <h3 class="faq-on" onclick="showhide('faq-5');">Q. How much does it cost ?</h3>
+
+                <p id="faq-5" class="answer">
+                    <strong>A.</strong> Nothing! It is free. Just enjoy it.
+                </p>
+
+                <span class="notetick"></span>
+
+                <h3 class="faq-on" onclick="showhide('faq-3');">Q. Do you offer commercial support?</h3>
+
+                <p id="faq-3" class="answer">
+                    <strong>A.</strong> If you like, however you probably don't need it :) pilgrim, has been deployed in highly demanding
+                    production systems and has a growing community of users. It is a free and open-source project. If you would like to submit a feature request, please <a href="https://github.com/liberation-data/pilgrim/issues">submit one on the github page</a>. If you're not sure how to do something pilgrim related, you may raise a question under the <a href="https://stackoverflow.com/questions/tagged/pilgrim">pilgrim</a> tag on StackOverflow.
+                </p>
+
+                <span class="notetick"></span>
+
+                <h3 class="faq-on" onclick="showhide('faq-4');">Q. Can pilgrim support multi-tenanted Neo4j v4 applications ?</h3>
+
+                <p id="faq-4" class="answer">
+                    <strong>A.</strong> Yes it can, you can use pilgrim to access multiple databases under the one code-base. These can be registered up-front or dynamically.
+                </p>
+
+                <span class="notetick"></span>
+
+            </div>
+        </div>
+
+
+        <div class="footer-container">
+            <div class="row">
+                <div class="four columns first-column hide-for-small">
+                    <p class="footer-left">ALL RIGHTS RESERVED 2019</p>
+                </div>
+                <div class="four columns middle-column back-to-top hide-for-small">
+                    <a href="#homepage"><img src="images/back-to-top.png" alt="Go Back To Top"></a>
+                </div>
+                <div class="four columns mobile-four">
+                    <p class="footer-right"><span>pilgrim</span> is sponsored and led by <a
+                            href="https://liberation-data.com">Liberation Data</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Included JS Files (Uncompressed) -->
+    <!--
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/jquery.foundation.mediaQueryToggle.js"></script>
+    <script src="javascripts/jquery.foundation.forms.js"></script>
+    <script src="javascripts/jquery.foundation.navigation.js"></script>
+    <script src="javascripts/jquery.foundation.buttons.js"></script>
+    <script src="javascripts/jquery.foundation.accordion.js"></script>
+    <script src="javascripts/jquery.placeholder.js"></script>
+    <script src="javascripts/jquery.foundation.alerts.js"></script>
+    <script src="javascripts/jquery.foundation.topbar.js"></script>
+    <script src="javascripts/jquery.foundation.joyride.js"></script>
+    <script src="javascripts/jquery.foundation.clearing.js"></script>
+    <script src="javascripts/jquery.foundation.magellan.js"></script>
+    -->
+
+    <!-- Included JS Files (Compressed) -->
+    <script src="javascripts/foundation.min.js"></script>
+
+    <!-- Parallax JS File -->
+    <script language="JavaScript">
+        if (screen && screen.width >= 1024) {
+            document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-parallax/1.1.3/jquery-parallax-min.js" type="text/javascript" ><\/script>');
+        }
+
+    </script>
+
+
+    <!-- prettyPhoto JS File -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prettyPhoto/3.1.6/js/jquery.prettyPhoto.min.js" type="text/javascript"></script>
+
+    <!-- Portfolio Filter JS FIles -->
+    <script type="text/javascript" src="javascripts/jquery.easing.min.js"></script>
+    <script type="text/javascript" src="javascripts/portfolio.js"></script>
+    <script type="text/javascript" src="javascripts/jquery.quicksand.js"></script>
+    <script type="text/javascript" src="javascripts/jquery-css-transform.js"></script>
+
+    <!-- Supersized JS Files -->
+    <script type="text/javascript" src="javascripts/supersized.3.2.7.min.js"></script>
+    <script type="text/javascript" src="javascripts/supersized.shutter.min.js"></script>
+
+    <script type="text/javascript">
+        function initSlideShow() {
+            jQuery(function ($) {
+                $.supersized({
+                    // Functionality
+                    slideshow: 1,			// Slideshow on/off
+                    autoplay: 1,			// Slideshow starts playing automatically
+                    start_slide: 1,			// Start slide (0 is random)
+                    stop_loop: 0,			// Pauses slideshow on last slide
+                    random: 0,			// Randomize slide order (Ignores start slide)
+                    slide_interval: 3000,		// Length between transitions
+                    transition: 1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
+                    transition_speed: 1500,		// Speed of transition
+                    new_window: 1,			// Image links open in new window/tab
+                    pause_hover: 0,			// Pause slideshow on hover
+                    keyboard_nav: 1,			// Keyboard navigation on/off
+                    performance: 1,			// 0-Normal, 1-Hybrid speed/quality, 2-Optimizes image quality, 3-Optimizes transition speed // (Only works for Firefox/IE, not Webkit)
+                    image_protect: 1,			// Disables image dragging and right click with Javascript
+                    // Size & Position
+                    min_width: 0,			// Min width allowed (in pixels)
+                    min_height: 0,			// Min height allowed (in pixels)
+                    vertical_center: 1,			// Vertically center background
+                    horizontal_center: 1,			// Horizontally center background
+                    fit_always: 0,			// Image will never exceed browser width or height (Ignores min. dimensions)
+                    fit_portrait: 0,			// Portrait images will not exceed browser height
+                    fit_landscape: 0,			// Landscape images will not exceed browser width
+                    // Components
+                    slide_links: 'blank',	// Individual links for each slide (Options: false, 'num', 'name', 'blank')
+                    thumb_links: 1,			// Individual thumb links for each slide
+                    thumbnail_navigation: 0,			// Thumbnail navigation
+                    slides: [			// Slideshow Images
+                        {
+                            image: 'images/homepage-slideshow/1.jpg',
+                            title: 'Pilgrim - Dependency Injection for Swift'
+                        },
+
+                    ],
+
+                    // Theme Options
+                    progress_bar: 0,			// Timer for each slide
+                    mouse_scrub: 0
+
+                });
+            });
+        }
+
+        if (screen && screen.width >= 1024) {
+            initSlideShow();
+        }
+
+
+    </script>
+
+    <!-- Initialize JS Plugins -->
+    <script src="javascripts/app.js"></script>
+    <script src="javascripts/jquery.foundation.tooltips.js"></script>
+    <script src="javascripts/jquery.foundation.reveal.js"></script>
+    <script src="javascripts/jquery.foundation.tabs.js"></script>
+
+    <!-- Initialize Orbit -->
+    <script src="javascripts/jquery.foundation.orbit.js"></script>
+    <script type='text/javascript'>
+        $(window).load(function () {
+            var windowsize = $(window).width();
+
+            $(window).resize(function () {
+                var windowsize = $(window).width();
+            });
+
+            if (windowsize > 1024) {
+                //if the window is greater than 1024px wide then load one orbit settings
+                $('#contact-slider').orbit({
+                    fluid: '16x5',
+                    timer: false,
+                    directionalNav: false,
+                    bullets: true,
+                    bulletThumbs: true,
+                    bulletThumbLocation: ''
+                });
+                $('#news-slider').orbit({
+                    fluid: '16x12',
+                    timer: false,
+                    directionalNav: false,
+                    bullets: true,
+                    bulletThumbs: true,
+                    bulletThumbLocation: ''
+                });
+            } else {
+                if (windowsize > 765) {
+                    $('#contact-slider').orbit({
+                        fluid: '16x6',
+                        timer: false,
+                        directionalNav: false,
+                        bullets: true,
+                        bulletThumbs: true,
+                        bulletThumbLocation: ''
+                    });
+                    $('#news-slider').orbit({
+                        fluid: '16x23',
+                        timer: false,
+                        directionalNav: false,
+                        bullets: true,
+                        bulletThumbs: true,
+                        bulletThumbLocation: ''
+                    });
+                }
+            }
+        });
+    </script>
+
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function () {
+            $("a[rel^='prettyPhoto']").prettyPhoto();
+        });
+    </script>
+
+    <!-- Initialize FitVids Script -->
+    <script src="javascripts/jquery.fitvids.js"></script>
+    <script>
+        $(".single-project-image-video").fitVids();
+    </script>
+
+</body>
+</html>
