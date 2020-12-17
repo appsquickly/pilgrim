@@ -107,7 +107,7 @@ Coming soon!
 
 ## Documentation
 
-The best way to learn Pilgrim is with our [User Guide](https://pilgrim.ph/guide/#/).
+Coming soon!
 
 ---------------------------------------
 
