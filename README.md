@@ -73,11 +73,14 @@ class QuestAssembly: PilgrimAssembly {
 }
 ```
 
-Note that you're binding the function that will emit the built instance to the type, not the return value (don't include brackets). 
+In the example above we can see: 
+
+* Functions that define architectural components. For example a `Knight` can fulfil a role when provided with a `Quest`. Each of these components has a lifecycle. 
+* `makeBindings` : We can obtain top-level build instances from the DI container using a property wrapper (described in the next step). Here we're providing the information on how to resolve - either by type (recommended), or if necessary, using keys. Note that you're binding the function that will emit the built instance, not the return value (don't add brackets!). 
 
 ## Inject Assembled Instances
 
-We can now inject built instances into top-level classes using the `Assembled` property wrapper, as follows: 
+Now inject built instances into top-level classes using the `Assembled` property wrapper, as follows: 
 
 ```swift
 class StoryViewController : UIViewController {
@@ -96,6 +99,13 @@ class StoryViewController : UIViewController {
 ```
 
 The built instance is auto-injected from the QuestAssembly.
+
+### Notes
+
+* Use the assembly to define how components interact. For example a `Quest` is injected into a `Knight` - this happens within the assembly. 
+* Use the `Assembled` property decorator to obtain built instances for injection into top-level components - eg a view controller, in a UIKit app. 
+* Assemblies can be layer. 
+
 
 ----
 
