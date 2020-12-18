@@ -98,7 +98,7 @@ class StoryViewController : UIViewController {
 }
 ```
 
-The built instance is auto-injected from the QuestAssembly.
+The built instance is auto-injected from the QuestAssembly. That's it!
 
 ### Notes
 
