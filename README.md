@@ -106,6 +106,15 @@ The built instance is auto-injected from the QuestAssembly. That's it!
 * Use the `Assembled` property decorator to obtain built instances for injection into top-level components - eg a view controller, in a UIKit app. 
 * Assemblies can be layered - I'll explain this concept in the User Guide. 
 
+## Installation 
+
+### CocoaPods 
+
+```
+pod 'Pilgrim-DI'
+```
+
+Other installation methods coming soon!
 
 ----
 
