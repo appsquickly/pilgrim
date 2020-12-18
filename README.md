@@ -6,7 +6,7 @@ Pilgrim is a dependency injection library for Swift with the following features:
 * Minimal runtime-only library that works with pure Swift (structs, classes, protocols) as well as ObjC base classes, when necessary.
 * Easy to install. Works on iOS, Mac & Linux. No compile-time weaving required.   
 * Type safe. No reflection or ObjC runtime, because it is pure swift. (Uses higher-order functions.) 
-* Lifecycles management: shared, weakShared, objectGraph (a DI concept introduced by [Typhoon](https://github.com/appsquickly/typhoon), for desktop and pocket apps) & unshared. 
+* Lifecycles management: `shared`, `weakShared`, `objectGraph` (a DI concept introduced by [Typhoon](https://github.com/appsquickly/typhoon), for desktop and pocket apps) & `unshared`. 
 * Can be used with SwiftUI, UIKit and Cocoa based apps.     
 * Simple and flexible. For example, it is easy to have two injectable instances that conform to the same protocol. 
 * Provides the notion of a [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/) in which the key actors, and their interactions in an application architecture are defined as a graph. This is where your app's architectural story is told. Assembled instances can then be injected into top level classes, such as a view controller, in a UIKit app, using property wrappers. 
