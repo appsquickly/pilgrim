@@ -24,14 +24,14 @@
 
 import Foundation
 
-class AssemblyHolder {
+public class AssemblyHolder {
 
     /**
      Set the default factory to be used by the Assembled property wrapper, when the application is bootstrapped.
      */
-    static var defaultAssemblyType: PilgrimAssembly.Type = PilgrimAssembly.self;
+    public static var defaultAssemblyType: PilgrimAssembly.Type = PilgrimAssembly.self;
 
-    static var instances: Dictionary<String, PilgrimAssembly> = [:]
+    public static var instances: Dictionary<String, PilgrimAssembly> = [:]
 
     /**
      Returns a shared assembly matching the specified type. 
