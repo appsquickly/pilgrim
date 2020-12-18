@@ -150,7 +150,7 @@ class WeatherReportController : UIViewController {
 
 ## Is that It? 
 
-More or less, but let‘s look at what happens when we start to apply this approach. If we keep on applying the approach, we arrive at a module where the key actors, their lifecycles and their interactions are defined. This is known as the assembly or [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root).
+More or less (dependency injection is, as they say, a $25 dollar term, for a five cent concept) but let‘s look at what happens when we start to apply this approach. If we continue to replace internally resolved dependencies with ones that are provided externally, we arrive at a module where the key actors, their lifecycles and their interactions are defined. This is known as the assembly or [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root).
 
 Pulling construction of these components to the composition root lets your application tell an architectural story. When the key actors are pulled up into an assembly the app's configuration is no longer fragmented, duplicated or tightly coupled. We can have the benefits of singletons, without the drawbacks. 
 
