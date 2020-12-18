@@ -74,7 +74,7 @@ open class PilgrimAssembly {
         makeBindings()
     }
 
-    public func makeBindings() -> Void {
+    open func makeBindings() -> Void {
 
     }
 
