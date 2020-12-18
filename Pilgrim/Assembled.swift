@@ -24,12 +24,12 @@
 
 import Foundation
 
-@propertyWrapper struct Assembled<Component> {
+@propertyWrapper public struct Assembled<Component> {
 
     var key: String?
     var component: Component?
 
-    init(key: String? = nil, assembly: PilgrimAssembly.Type = AssemblyHolder.defaultAssemblyType) {
+    public init(key: String? = nil, assembly: PilgrimAssembly.Type = AssemblyHolder.defaultAssemblyType) {
         let assembly = AssemblyHolder.shared(assembly: assembly)
         if (assembly.isActivated) {
             self.key = key != nil ? key! : String(describing: Component.self).removingOptionalWrapper()
@@ -43,11 +43,11 @@ import Foundation
         }
     }
 
-    init(key: String) {
+    public init(key: String) {
         self.init(key: key, assembly: AssemblyHolder.defaultAssemblyType)
     }
 
-    init(assembly: PilgrimAssembly.Type) {
+    public init(assembly: PilgrimAssembly.Type) {
         self.init(key: nil, assembly: assembly)
     }
 
