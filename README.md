@@ -85,7 +85,7 @@ class StoryViewController : UIViewController {
     /**
      The built instance is auto-injected from the QuestAssembly 
     */
-    @Assembled(assembly: QuestAssembly.self) var knight: Knight; 
+    @Assembled var knight: Knight; 
 
     private(set) var story: Story 
   
