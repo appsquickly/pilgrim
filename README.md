@@ -18,7 +18,7 @@ You can use Pilgrim in apps that employ the object-oriented programming paradigm
 
 ## Quick Start
 
-Here's how to get up and running with Pilgrim in two minutes. 
+Here's how to get up and running with Pilgrim in two minutes. There are three steps. 
 
 ## Bootstrap 
 
@@ -34,7 +34,7 @@ class MyApplication: UIApplication {
 }
 UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, "MyApplication", "MyAppDelegate")
 ```
-This step allows using the `Assembled` property wrapper without explicitly specifying an assembly type. 
+This step allows using the `Assembled` property wrapper (step 3) without explicitly specifying an assembly type. 
 
 ## Define Assemblies 
 
