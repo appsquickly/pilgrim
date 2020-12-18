@@ -38,7 +38,7 @@ This step allows using the `Assembled` property wrapper without explicitly speci
 
 ## Define Assemblies 
 
-An assembly (also known as the [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/)) is where we compose the key actors within an application architecture, their lifecycles and how they interact in order to fulfil their roles. 
+An assembly (also known as the [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/)) is where we declare the key actors within an application architecture, their lifecycles and how they interact in order to fulfil their roles. 
 
 ```swift
 class QuestAssembly: PilgrimAssembly {
