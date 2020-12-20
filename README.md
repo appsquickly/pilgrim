@@ -118,7 +118,7 @@ Other installation methods coming soon!
 
 ----
 
-## Example Applications
+## Sample App
 
 Coming soon!
 
@@ -126,7 +126,7 @@ Coming soon!
 
 ## User Guide
 
-Coming soon!
+The best way to get up and running is to try the quick start and sample app. After that the [User Guide](https://github.com/appsquickly/pilgrim/wiki/User-Guide) is your reference. 
 
 ---------------------------------------
 
