@@ -65,7 +65,7 @@ class QuestAssembly: PilgrimAssembly {
   }
 
   /**
-   HolyGrailQuest is a struct that conforms to the Quest protocol.
+   Damsel's name is Bruce and the Knight is a lovely lass named Fiona. 
    */
   func damselInDistressQuest() -> Quest {
     shared(DamselInDistressQuest())
