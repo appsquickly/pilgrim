@@ -12,7 +12,6 @@
 		BA79809794B1B47599034E05 /* Assembled.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798B03CDE6DD494527DB1F /* Assembled.swift */; };
 		BA7980C0F138D127CAB0C940 /* AssembledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D200B111F732BA63EB /* AssembledTests.swift */; };
 		BA7980EB3748B27CC47C2F1B /* KeyGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7988610D8CCF85AFA4C650 /* KeyGeneratorTests.swift */; };
-		BA7980FAA73309B96785B5B7 /* QuestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798C6297631B363ABFC647 /* QuestAssembly.swift */; };
 		BA79843FC9B6CC3A44DD77CB /* TestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7989911620CF4125D32BCA /* TestAssembly.swift */; };
 		BA7987389CB4EB3CBC588588 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798F82EAB59A643CD2D25C /* Knight.swift */; };
 		BA7988EF80D64675A11A976A /* TestInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7984B3CBB0C8280ED8D168 /* TestInstance.swift */; };
@@ -252,7 +251,6 @@
 				BA798A2E16271B995993E7C5 /* DispatchQueue+Tokens.swift in Sources */,
 				BA7989EBD3366CAC9D8FB8A3 /* PilgrimAssembly.swift in Sources */,
 				BA798EBC955FFDAD2E170160 /* String+KeyGenerator.swift in Sources */,
-				BA7980FAA73309B96785B5B7 /* QuestAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,7 +38,7 @@ public class AssemblyHolder {
      - Parameter type:
      - Returns:
      */
-    static func shared(assembly: PilgrimAssembly.Type = defaultAssemblyType) -> PilgrimAssembly {
+    public static func shared(assembly: PilgrimAssembly.Type = defaultAssemblyType) -> PilgrimAssembly {
         let key = String(describing: assembly)
         let token = "\(key).Pilgrim.assembly"
         DispatchQueue.once(token: token) {

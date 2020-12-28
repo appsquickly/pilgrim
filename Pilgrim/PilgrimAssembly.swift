@@ -45,10 +45,6 @@ open class PilgrimAssembly {
         let lifecycle: Lifecycle
         let name: String
 
-        var hashValue: Int {
-            lifecycle.hashValue ^ name.hashValue
-        }
-
         var description: String {
             "\(lifecycle)(\(name))"
         }
@@ -56,6 +52,12 @@ open class PilgrimAssembly {
         static func ==(lhs: InstanceKey, rhs: InstanceKey) -> Bool {
             (lhs.lifecycle == rhs.lifecycle) && (lhs.name == rhs.name)
         }
+
+        public func hash(into hasher: inout Hasher) {
+            hasher.combine(lifecycle)
+            hasher.combine(name)
+        }
+
     }
 
     var isActivated: Bool;
