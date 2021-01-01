@@ -43,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 ```
+_Here's how your code might look afterwards._ 
 
 ## Installation 
 
