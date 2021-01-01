@@ -72,7 +72,7 @@ The best way to get up and running is to try the quick start and sample app. Aft
 
 ## What is Dependency Injection? 
 
-Not sure? There's a guide on the [pilgrim.ph](https://pilgrim.ph) website. Head on over and take a look. We'll meet back here. 
+Not sure? There's an introduction on the [pilgrim.ph](https://pilgrim.ph) website. Head on over and take a look. We'll meet back here. 
 
 ## Feedback
 
