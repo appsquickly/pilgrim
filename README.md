@@ -19,7 +19,9 @@ You can use Pilgrim in apps that employ the object-oriented programming paradigm
 
 ## Quick Start
 
-Want to start applying dependency injection to your code in two minutes? Follow the [Quick Start](https://github.com/appsquickly/pilgrim/wiki/Quick-Start) guide! Here's how your code might look, when you're done. 
+Want to start applying dependency injection to your code in two minutes? **Follow the [Quick Start](https://github.com/appsquickly/pilgrim/wiki/Quick-Start) guide!**
+
+Here's how your code might look, when you're done. 
 
 ```swift 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -70,55 +72,7 @@ The best way to get up and running is to try the quick start and sample app. Aft
 
 ## What is Dependency Injection? 
 
-Many people have trouble getting the hang of dependency injection, at first. I think part of the problem is that it is actually so simple that we’re inclined to look for something more complicated. With that in mind, imagine that you’re writing an app that gives weather reports. You need a cloud-service (excuse the pun) to provide the data. At first, you go for a free weather report provider, but in future you’d like to integrate a weather service with better accuracy and more features. So like a good object-oriented developer, you make a WeatherClient protocol and back it initially with an implementation based on the free, online data provider.
-
-### Without Dependency Injection
-
-It might look like this: 
-
-```swift
-class WeatherReportController : UIViewController { 
-  let weatherClient = WeatherReportClient(key: myApiKey) 
-}
-```
-
-A problem with this approach is if you wanted to change to another weather client implementation you’d have to go and find all the places in your code that use the old one, and move them over to the new one. Each time, making sure to pass in the correct initialization parameters. A common approach is to have a centrally configured singleton:
-
-```swift
-class WeatherReportController : UIViewController {
-    let weatherClient = WeatherReportClient.shared
-}
-```
-
-This gets around the problem of having a single point of truth for configuration, but in order to test the WeatherReportController, you now have to test its collaborating class (the weather client) at the same time. This can get tricky, especially as your application gets more complex. Imagine testing Class A, depends on Class B, depends on Class C, depends on… Not much fun! 
-
-### Enter Dependency Injection
-
-Rather than seek out collaborators, they are provided externally. 
-
-```swift
-class WeatherReportController : UIViewController {
-  private(set) var weatherClient: WeatherReportProvider
-  init(client: weatherClient) {
-    self.weatherClient = client 
-  }
-}
-```
-
-## Is that It? 
-
-More or less (dependency injection is, as they say, a $25 dollar term, for a five cent concept) but let‘s look at what happens when we start to apply this approach. If we continue to replace internally resolved dependencies with ones that are provided externally, we arrive at a module where the key actors, their lifecycles and their interactions are defined. This is known as the assembly or [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root).
-
-Pulling construction of these components to the composition root lets your application tell an architectural story. When the key actors are pulled up into an assembly the app's configuration is no longer fragmented, duplicated or tightly coupled. We can have the benefits of singletons, without the drawbacks. 
-
-## Benefits of Dependency Injection 
-
-* We can substitute another actor to fulfill a given role. If you want to change from one implementation of a class to another, you need only change a single declaration.
-* By removing tight-coupling, we need not understand all of a problem at once, its easy to evolve our app’s design as the requirements evolve.
-* Classes and structs are easier to test, because we can supply test doubles in place of concrete collaborators (unit tests). Or the real collaborators, but configured to be used in a test scenario (integration tests).
-* It promotes separation of concerns with a clear contract between classes.
-* It is easy to see what each class needs in order to do its job.
-* We can quickly prototype an application architecture - designing the key actors by contract.
+Not sure? There's a guide on the [pilgrim.ph](https://pilgrim.ph) website. Head on over and take a look. We'll meet back here. 
 
 ## Feedback
 
