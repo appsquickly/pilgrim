@@ -19,93 +19,30 @@ You can use Pilgrim in apps that employ the object-oriented programming paradigm
 
 ## Quick Start
 
-Here's how to get up and running with Pilgrim in two minutes. There are three steps. 
+Want to start applying dependency injection to your code in two minutes? Follow the [Quick Start](
 
-## Bootstrap 
+```swift 
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-(Optionally) bootstrap the default assembly type when the app launches, for example in main.swift: 
+    var window: UIWindow?
+    @Assembled var cityRepo: CityRepository
+    @Assembled var rootViewController: RootViewController
 
-```swift
-class MyApplication: UIApplication {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
 
-    override init() {
-        AssemblyHolder.defaultAssemblyType = QuestAssembly.self
-    }
-    
-}
-UIApplicationMain(CommandLine.argc, CommandLine.unsafeArgv, "MyApplication", "MyAppDelegate")
-```
-This step allows using the `Assembled` property wrapper (step 3) without explicitly specifying an assembly type. 
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window!.rootViewController = rootViewController
+        window!.makeKeyAndVisible()
 
-## Define Assemblies 
-
-An assembly (also known as the [composition root](https://freecontent.manning.com/dependency-injection-in-net-2nd-edition-understanding-the-composition-root/)) is where we declare the key actors within an application architecture, their lifecycles and how they interact in order to fulfil their roles. 
-
-```swift
-class QuestAssembly: PilgrimAssembly {
-
-  let childAssembly = ChildAssembly()
-
-  override func makeBindings() {
-    super.makeBindings()
-    makeInjectable(knight, byType: Knight.self)
-    makeInjectable(holyGrailQuest, byType: Quest.self)
-    makeInjectable(holyGrailQuest, byKey: "damselQuest")
-    importBindings(childAssembly)
-  }
-
-  func knight() -> Knight {
-    weakShared(Knight(quest: damselInDistressQuest()))
-  }
-
-  /**
-   HolyGrailQuest is a struct that conforms to the Quest protocol.
-   */
-  func holyGrailQuest() -> Quest {
-    shared(HolyGrailQuest())
-  }
-
-  /**
-   Damsel's name is Bruce and the Knight is a lovely lass named Fiona. 
-   */
-  func damselInDistressQuest() -> Quest {
-    shared(DamselInDistressQuest())
-  }
-}
-```
-
-In the example above we can see: 
-
-* Functions that define architectural components. For example a `Knight` can fulfil a role when provided with a `Quest`. Each of these components has a lifecycle. 
-* `makeBindings` : We can obtain top-level build instances from the DI container using a property wrapper. This is described in the next step. Here we're providing the information on how to resolve - either by type, which is the default, or if necessary using keys. Note that you're binding the function that will emit the built instance, not the return value (so don't add brackets!). 
-
-## Inject Assembled Instances
-
-Now we can inject built instances into top-level classes using the `Assembled` property wrapper, as follows: 
-
-```swift
-class StoryViewController : UIViewController {
-
-    /**
-     The built instance is auto-injected from the QuestAssembly 
-    */
-    @Assembled var knight: Knight; 
-
-    private(set) var story: Story 
-  
-    init(story: Story) {
-      self.story = story
+        let selectedCity: String! = cityRepo.loadSelectedCity()
+        if selectedCity == nil {
+            rootViewController.showCitiesListController()
+        }
+        return true
     }
 }
 ```
-
-The built instance is auto-injected from the QuestAssembly. That's it!
-
-### Notes
-
-* Use the assembly to define how components interact. For example a `Quest` is injected into a `Knight` - this happens within the assembly. 
-* Use the `Assembled` property decorator to obtain built instances for injection into top-level components - eg a view controller, in a UIKit app. 
-* Assemblies can be layered - I'll explain this concept in the User Guide. 
 
 ## Installation 
 
