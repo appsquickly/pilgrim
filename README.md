@@ -115,13 +115,13 @@ The built instance is auto-injected from the QuestAssembly. That's it!
 pod 'Pilgrim-DI'
 ```
 
-Other installation methods coming soon!
+Other installation methods (Swift Package Manager, etc) coming soon!
 
 ----
 
 ## Sample App
 
-Coming soon!
+Here's a [sample app](https://github.com/appsquickly/pilgrim-starter) / starter template, to get up and running quickly. 
 
 ----
 
