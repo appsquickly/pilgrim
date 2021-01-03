@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = assembly.window()
         window?.makeKeyAndVisible()
 
-        guard (cityRepo.loadSelectedCity()) != nil else {
+        if (cityRepo.loadSelectedCity() == nil) {
             rootViewController.showCitiesListController()
         }
         return true
