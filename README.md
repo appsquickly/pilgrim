@@ -21,8 +21,6 @@ You can use Pilgrim in apps that employ the object-oriented programming paradigm
 
 Want to start applying dependency injection to your code in two minutes? **Follow the [Quick Start](https://github.com/appsquickly/pilgrim/wiki) guide!**
 
-Here's how your code might look, when you're done. 
-
 ```swift 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -45,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 ```
+_Here's how your code might look, when you're done._
+
 
 ## Installation 
 
