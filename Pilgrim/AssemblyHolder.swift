@@ -39,9 +39,11 @@ public class AssemblyHolder {
      - Returns:
      */
     public static func shared(assembly: PilgrimAssembly.Type = defaultAssemblyType) -> PilgrimAssembly {
+        objc_sync_enter(self); defer {
+            objc_sync_exit(self)
+        }
         let key = String(describing: assembly)
-        let token = "\(key).Pilgrim.assembly"
-        DispatchQueue.once(token: token) {
+        if instances[key] == nil {
             instances[key] = (assembly).init()
         }
         return instances[key]!;

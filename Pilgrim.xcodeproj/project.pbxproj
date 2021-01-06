@@ -16,7 +16,6 @@
 		BA7987389CB4EB3CBC588588 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798F82EAB59A643CD2D25C /* Knight.swift */; };
 		BA7988EF80D64675A11A976A /* TestInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7984B3CBB0C8280ED8D168 /* TestInstance.swift */; };
 		BA7989EBD3366CAC9D8FB8A3 /* PilgrimAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7981DE7387658B5F3B8025 /* PilgrimAssembly.swift */; };
-		BA798A2E16271B995993E7C5 /* DispatchQueue+Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798609CA8ABA184139C1DE /* DispatchQueue+Tokens.swift */; };
 		BA798AEE186DB5FC5886A382 /* PilgrimAssemblyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798B53EA2ADBE335EB92AD /* PilgrimAssemblyTests.swift */; };
 		BA798B0986E04245D111DE00 /* Quest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798D2C5808FE966767E95D /* Quest.swift */; };
 		BA798C374436ED8D01EB96E4 /* AssemblyHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7986085CBEE68BD0C31780 /* AssemblyHolder.swift */; };
@@ -44,7 +43,6 @@
 		BA7983D200B111F732BA63EB /* AssembledTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssembledTests.swift; sourceTree = "<group>"; };
 		BA7984B3CBB0C8280ED8D168 /* TestInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInstance.swift; sourceTree = "<group>"; };
 		BA7986085CBEE68BD0C31780 /* AssemblyHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssemblyHolder.swift; sourceTree = "<group>"; };
-		BA798609CA8ABA184139C1DE /* DispatchQueue+Tokens.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Tokens.swift"; sourceTree = "<group>"; };
 		BA7988610D8CCF85AFA4C650 /* KeyGeneratorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyGeneratorTests.swift; sourceTree = "<group>"; };
 		BA7989911620CF4125D32BCA /* TestAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestAssembly.swift; sourceTree = "<group>"; };
 		BA798B03CDE6DD494527DB1F /* Assembled.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembled.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 				6B5B8C08258ABF2D00159D55 /* Info.plist */,
 				BA798B03CDE6DD494527DB1F /* Assembled.swift */,
 				BA7986085CBEE68BD0C31780 /* AssemblyHolder.swift */,
-				BA798609CA8ABA184139C1DE /* DispatchQueue+Tokens.swift */,
 				BA7981DE7387658B5F3B8025 /* PilgrimAssembly.swift */,
 				BA798F476FA262D540A69FB4 /* String+KeyGenerator.swift */,
 			);
@@ -248,7 +245,6 @@
 			files = (
 				BA79809794B1B47599034E05 /* Assembled.swift in Sources */,
 				BA798C374436ED8D01EB96E4 /* AssemblyHolder.swift in Sources */,
-				BA798A2E16271B995993E7C5 /* DispatchQueue+Tokens.swift in Sources */,
 				BA7989EBD3366CAC9D8FB8A3 /* PilgrimAssembly.swift in Sources */,
 				BA798EBC955FFDAD2E170160 /* String+KeyGenerator.swift in Sources */,
 			);
