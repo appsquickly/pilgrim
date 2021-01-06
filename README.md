@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 ```
-_Here's how your code might look, when you're done._
+_Here's how your code might look, when you're done with the [quick start](https://github.com/appsquickly/pilgrim/wiki)._
 
 
 ## Installation 
