@@ -66,7 +66,7 @@ Here's a [sample app](https://github.com/appsquickly/pilgrim-starter) / starter 
 
 ## User Guide
 
-The best way to get up and running is to try the quick start and sample app. After that the [User Guide](https://github.com/appsquickly/pilgrim/wiki/User-Guide) is your reference. 
+The best way to get up and running is to try the quick start and sample app. After that the [User Guide](https://github.com/appsquickly/pilgrim/wiki/) is your reference. 
 
 ---------------------------------------
 
