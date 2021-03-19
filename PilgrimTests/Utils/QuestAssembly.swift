@@ -3,6 +3,8 @@ import Foundation
 
 class QuestAssembly: PilgrimAssembly {
 
+    let other = AssemblyHolder.shared(assembly: AnotherAssembly.self)
+
     override func makeBindings() {
         super.makeBindings()
         makeInjectable(knight, byType: Knight.self)

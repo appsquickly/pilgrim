@@ -39,9 +39,8 @@ public class AssemblyHolder {
      - Returns:
      */
     public static func shared(assembly: PilgrimAssembly.Type = defaultAssemblyType) -> PilgrimAssembly {
-        objc_sync_enter(self); defer {
-            objc_sync_exit(self)
-        }
+        objc_sync_enter(self)
+        defer { objc_sync_exit(self) }
         let key = String(describing: assembly)
         if instances[key] == nil {
             instances[key] = (assembly).init()

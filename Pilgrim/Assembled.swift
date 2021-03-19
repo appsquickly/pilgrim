@@ -36,6 +36,10 @@ import Foundation
             if let function = assembly.factoryFor(key: self.key!) {
                 let component = function() as! Component
                 self.component = component
+            } else {
+                let message = "PILGRIM ERROR : There's no component defined for key: \(self.key).\n"
+                    + "Did you declare this component as injectable under `importBindings`?"
+                fatalError(message)
             }
 
         } else {

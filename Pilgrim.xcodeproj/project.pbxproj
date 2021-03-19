@@ -13,6 +13,7 @@
 		BA7980C0F138D127CAB0C940 /* AssembledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D200B111F732BA63EB /* AssembledTests.swift */; };
 		BA7980EB3748B27CC47C2F1B /* KeyGeneratorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7988610D8CCF85AFA4C650 /* KeyGeneratorTests.swift */; };
 		BA79843FC9B6CC3A44DD77CB /* TestAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7989911620CF4125D32BCA /* TestAssembly.swift */; };
+		BA7986480C336A8C18C2C4CA /* AnotherAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA79824F0DCD2291832AD03C /* AnotherAssembly.swift */; };
 		BA7987389CB4EB3CBC588588 /* Knight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798F82EAB59A643CD2D25C /* Knight.swift */; };
 		BA7988EF80D64675A11A976A /* TestInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7984B3CBB0C8280ED8D168 /* TestInstance.swift */; };
 		BA7989EBD3366CAC9D8FB8A3 /* PilgrimAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7981DE7387658B5F3B8025 /* PilgrimAssembly.swift */; };
@@ -40,6 +41,7 @@
 		6B5B8C0D258ABF2D00159D55 /* PilgrimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PilgrimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B8C14258ABF2D00159D55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA7981DE7387658B5F3B8025 /* PilgrimAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PilgrimAssembly.swift; sourceTree = "<group>"; };
+		BA79824F0DCD2291832AD03C /* AnotherAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnotherAssembly.swift; sourceTree = "<group>"; };
 		BA7983D200B111F732BA63EB /* AssembledTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssembledTests.swift; sourceTree = "<group>"; };
 		BA7984B3CBB0C8280ED8D168 /* TestInstance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestInstance.swift; sourceTree = "<group>"; };
 		BA7986085CBEE68BD0C31780 /* AssemblyHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssemblyHolder.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				BA7984B3CBB0C8280ED8D168 /* TestInstance.swift */,
 				BA798C0EF7832298A6C65097 /* TestModels */,
 				BA798C6297631B363ABFC647 /* QuestAssembly.swift */,
+				BA79824F0DCD2291832AD03C /* AnotherAssembly.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				BA798D4C3987A6EFB762B616 /* QuestAssembly.swift in Sources */,
 				BA7980C0F138D127CAB0C940 /* AssembledTests.swift in Sources */,
 				BA7980EB3748B27CC47C2F1B /* KeyGeneratorTests.swift in Sources */,
+				BA7986480C336A8C18C2C4CA /* AnotherAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -403,7 +407,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VJ57RGVK27;
+				DEVELOPMENT_TEAM = 3U588QPJ72;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -414,9 +418,12 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.Pilgrim;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -427,7 +434,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VJ57RGVK27;
+				DEVELOPMENT_TEAM = 3U588QPJ72;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -441,6 +448,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.Pilgrim;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -449,16 +458,21 @@
 		6B5B8C1C258ABF2D00159D55 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VJ57RGVK27;
+				DEVELOPMENT_TEAM = 3U588QPJ72;
 				INFOPLIST_FILE = PilgrimTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.PilgrimTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -467,8 +481,10 @@
 		6B5B8C1D258ABF2D00159D55 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VJ57RGVK27;
+				DEVELOPMENT_TEAM = 3U588QPJ72;
 				INFOPLIST_FILE = PilgrimTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,6 +493,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = appsquickly.PilgrimTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
