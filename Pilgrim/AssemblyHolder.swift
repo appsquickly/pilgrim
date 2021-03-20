@@ -27,7 +27,13 @@ import Foundation
 public class AssemblyHolder<T : PilgrimAssembly> {
 
     public static var defaultAssemblyType: PilgrimAssembly.Type {
-        AssemblyHolderInternal.defaultAssemblyType
+        get {
+            AssemblyHolderInternal.defaultAssemblyType
+        }
+        set {
+            AssemblyHolderInternal.defaultAssemblyType = newValue
+        }
+
     }
 
     public static var instances: Dictionary<String, PilgrimAssembly> {
@@ -42,6 +48,7 @@ public class AssemblyHolder<T : PilgrimAssembly> {
 class AssemblyHolderInternal {
 
     /**
+
      Set the default factory to be used by the Assembled property wrapper, when the application is bootstrapped.
      */
     public static var defaultAssemblyType: PilgrimAssembly.Type = PilgrimAssembly.self;
