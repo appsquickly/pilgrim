@@ -24,7 +24,22 @@
 
 import Foundation
 
-public class AssemblyHolder {
+public class AssemblyHolder<T : PilgrimAssembly> {
+
+    public static var defaultAssemblyType: PilgrimAssembly.Type {
+        AssemblyHolderInternal.defaultAssemblyType
+    }
+
+    public static var instances: Dictionary<String, PilgrimAssembly> {
+        AssemblyHolderInternal.instances
+    }
+
+    public static func shared(assembly: T.Type) -> T {
+        AssemblyHolderInternal.shared(assembly: assembly) as! T
+    }
+}
+
+class AssemblyHolderInternal {
 
     /**
      Set the default factory to be used by the Assembled property wrapper, when the application is bootstrapped.

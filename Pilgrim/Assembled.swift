@@ -30,7 +30,7 @@ import Foundation
     var component: Component?
 
     public init(key: String? = nil, assembly: PilgrimAssembly.Type = AssemblyHolder.defaultAssemblyType) {
-        let assembly = AssemblyHolder.shared(assembly: assembly)
+        let assembly = AssemblyHolderInternal.shared(assembly: assembly)
         if (assembly.isActivated) {
             self.key = key != nil ? key! : String(describing: Component.self).removingOptionalWrapper()
             if let function = assembly.factoryFor(key: self.key!) {
@@ -48,7 +48,7 @@ import Foundation
     }
 
     public init(key: String) {
-        self.init(key: key, assembly: AssemblyHolder.defaultAssemblyType)
+        self.init(key: key, assembly: AssemblyHolderInternal.defaultAssemblyType)
     }
 
     public init(assembly: PilgrimAssembly.Type) {

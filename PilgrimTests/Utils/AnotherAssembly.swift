@@ -13,4 +13,9 @@ import Foundation
 import Pilgrim
 
 class AnotherAssembly : PilgrimAssembly {
+
+    func anotherQuest() -> Quest {
+        shared(DamselInDistressQuest())
+    }
+
 }

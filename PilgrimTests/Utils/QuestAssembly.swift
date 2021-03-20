@@ -3,7 +3,7 @@ import Foundation
 
 class QuestAssembly: PilgrimAssembly {
 
-    let other = AssemblyHolder.shared(assembly: AnotherAssembly.self)
+    let other = AssemblyHolder<AnotherAssembly>.shared(assembly: AnotherAssembly.self)
 
     override func makeBindings() {
         super.makeBindings()
@@ -13,7 +13,7 @@ class QuestAssembly: PilgrimAssembly {
     }
 
     func knight() -> Knight {
-        objectGraph(Knight(quest: damselInDistressQuest()))
+        objectGraph(Knight(quest: other.anotherQuest()))
     }
 
     /**
