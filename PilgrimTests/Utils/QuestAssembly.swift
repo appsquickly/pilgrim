@@ -3,7 +3,7 @@ import Foundation
 
 class QuestAssembly: PilgrimAssembly {
 
-    let other = AssemblyHolder<AnotherAssembly>.shared(assembly: AnotherAssembly.self)
+    let other = AssemblyHolder<AnotherAssembly>.shared(AnotherAssembly.self)
 
     override func makeBindings() {
         super.makeBindings()

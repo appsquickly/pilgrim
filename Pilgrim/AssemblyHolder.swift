@@ -40,8 +40,8 @@ public class AssemblyHolder<T : PilgrimAssembly> {
         AssemblyHolderInternal.instances
     }
 
-    public static func shared(assembly: T.Type) -> T {
-        AssemblyHolderInternal.shared(assembly: assembly) as! T
+    public static func shared(_ assembly: T.Type) -> T {
+        AssemblyHolderInternal.shared(assembly) as! T
     }
 }
 
@@ -60,7 +60,7 @@ class AssemblyHolderInternal {
      - Parameter type:
      - Returns:
      */
-    public static func shared(assembly: PilgrimAssembly.Type = defaultAssemblyType) -> PilgrimAssembly {
+    public static func shared(_ assembly: PilgrimAssembly.Type = defaultAssemblyType) -> PilgrimAssembly {
         objc_sync_enter(self)
         defer { objc_sync_exit(self) }
         let key = String(describing: assembly)
