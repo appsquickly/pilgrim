@@ -1,8 +1,6 @@
 <a href="https://pilgrim.ph"> ![PilgrimSplash](https://pilgrim.ph/splash.jpg)</a>
 # <a href="https://pilgrim.ph">pilgrim.ph</a>
 
-[![Jasper's GitHub stats](https://github-readme-stats.vercel.app/api?username=jasperblues)](https://github.com/appsquickly/typhoon)
-
 Pilgrim is a dependency injection library for Swift with the following features:
 
 * Minimal runtime-only library that works with pure Swift (structs, classes, protocols) as well as ObjC base classes, when necessary.
