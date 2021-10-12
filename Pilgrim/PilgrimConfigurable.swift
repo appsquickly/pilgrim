@@ -11,7 +11,7 @@
 
 import Foundation
 
-protocol PilgrimConfigurable {
+public protocol PilgrimConfigurable {
 
     func configure(assembly: PilgrimAssembly)
 

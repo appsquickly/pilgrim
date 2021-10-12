@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'Pilgrim-DI'
   s.module_name      = 'PilgrimDI'
-  s.version          = '1.1.0'
+  s.version          = '1.1.1'
   s.summary          = 'Powerful dependency injection for Swift (iOS | OSX | Linux).'
   s.description      = 'Pilgrim provides simple and effective DI using an assembly and property wrappers.'
   s.homepage         = 'https://pilgrim.ph'
