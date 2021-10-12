@@ -17,8 +17,4 @@ public protocol PilgrimConfigurable {
 
 }
 
-extension PilgrimConfigurable {
 
-    func configure(assembly: PilgrimAssembly) {}
-
-}
