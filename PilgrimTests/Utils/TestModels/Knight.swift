@@ -23,12 +23,17 @@
  */
 
 import Foundation
+@testable import Pilgrim
 
-class Knight {
+class Knight : PilgrimConfigurable {
 
     private(set) var quest : Quest
 
     init(quest: Quest) {
         self.quest = quest
+    }
+
+    func configure(assembly: PilgrimAssembly) {
+
     }
 }

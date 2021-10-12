@@ -95,10 +95,10 @@ open class PilgrimAssembly {
         }
 
         return inject(
-                lifecycle: .shared,
-                name: name,
-                factory: factory,
-                configure: configure
+            lifecycle: .shared,
+            name: name,
+            factory: factory,
+            configure: configure
         )
     }
 
@@ -117,13 +117,13 @@ open class PilgrimAssembly {
 
         var instance: T! // Keep instance alive for duration of method
         let weakInstance: Weak<T> = inject(
-                lifecycle: .weakShared,
-                name: name,
-                factory: {
-                    instance = factory()
-                    return Weak(instance)
-                },
-                configure: { configure?($0.instance!) }
+            lifecycle: .weakShared,
+            name: name,
+            factory: {
+                instance = factory()
+                return Weak(instance)
+            },
+            configure: { configure?($0.instance!) }
         )
 
         return weakInstance.instance!
@@ -136,9 +136,9 @@ open class PilgrimAssembly {
     public final func unshared<T>(name: String = #function, _ factory: @autoclosure () -> T,
                                   configure: ((T) -> Void)? = nil) -> T {
         inject(lifecycle: .unshared,
-                name: name,
-                factory: factory,
-                configure: configure
+            name: name,
+            factory: factory,
+            configure: configure
         )
     }
 
@@ -153,10 +153,10 @@ open class PilgrimAssembly {
         }
 
         return inject(
-                lifecycle: .objectGraph,
-                name: name,
-                factory: factory,
-                configure: configure
+            lifecycle: .objectGraph,
+            name: name,
+            factory: factory,
+            configure: configure
         )
     }
 
@@ -171,8 +171,8 @@ open class PilgrimAssembly {
 
     public final func makeInstanceInjectable(_ instance: AnyObject, byType: Any.Type? = nil) -> Void {
         let typeKeyForInstance = byType != nil ?
-                String(describing: byType).removingOptionalWrapper() :
-                String(describing: instance).components(separatedBy: ".").last!
+            String(describing: byType).removingOptionalWrapper() :
+            String(describing: instance).components(separatedBy: ".").last!
         makeInjectable({ () -> Any in self }, byKey: typeKeyForInstance)
     }
 
@@ -196,9 +196,8 @@ open class PilgrimAssembly {
         instanceStack.removeLast()
         registerInstance(lifecycle: lifecycle, name: name, instance: instance)
 
-        if let configure = configure {
-            configureStack.append({ configure(instance) })
-        }
+        performLifecycleEvents(instance: instance, configure: configure)
+
 
         if instanceStack.count == 0 {
             // A configure call may trigger another instance stack to be generated, so must make a
@@ -223,6 +222,17 @@ open class PilgrimAssembly {
         }
 
         return instance
+    }
+
+    private func performLifecycleEvents<T>(instance: T, configure: ((T) -> ())?) {
+
+        if let configure = configure {
+            configureStack.append({ configure(instance) })
+        }
+
+        if let configurable = instance as? PilgrimConfigurable {
+            configureStack.append({ configurable.configure(assembly: self) })
+        }
     }
 
     private func registerInstance<T>(lifecycle: Lifecycle, name: String, instance: T) {
