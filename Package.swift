@@ -8,7 +8,7 @@ let package = Package(
         .macOS(.v10_10)
     ],
 	products: [
-		.library(name: "Pilgrim", targets: ["Pilgrim"])
+		.library(name: "PilgrimDI", targets: ["Pilgrim"])
 	],
 	targets: [
 		.target(
