@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B5B8C0E258ABF2D00159D55 /* Pilgrim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B8C04258ABF2D00159D55 /* Pilgrim.framework */; };
+		6B5B8C0E258ABF2D00159D55 /* PilgrimDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B5B8C04258ABF2D00159D55 /* PilgrimDI.framework */; };
 		6B5B8C15258ABF2D00159D55 /* Pilgrim.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B5B8C07258ABF2D00159D55 /* Pilgrim.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BA79809794B1B47599034E05 /* Assembled.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA798B03CDE6DD494527DB1F /* Assembled.swift */; };
 		BA7980C0F138D127CAB0C940 /* AssembledTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7983D200B111F732BA63EB /* AssembledTests.swift */; };
@@ -36,7 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6B5B8C04258ABF2D00159D55 /* Pilgrim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pilgrim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B5B8C04258ABF2D00159D55 /* PilgrimDI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PilgrimDI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B5B8C07258ABF2D00159D55 /* Pilgrim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Pilgrim.h; sourceTree = "<group>"; };
 		6B5B8C08258ABF2D00159D55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B5B8C0D258ABF2D00159D55 /* PilgrimTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PilgrimTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B5B8C0E258ABF2D00159D55 /* Pilgrim.framework in Frameworks */,
+				6B5B8C0E258ABF2D00159D55 /* PilgrimDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +88,7 @@
 		6B5B8C05258ABF2D00159D55 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6B5B8C04258ABF2D00159D55 /* Pilgrim.framework */,
+				6B5B8C04258ABF2D00159D55 /* PilgrimDI.framework */,
 				6B5B8C0D258ABF2D00159D55 /* PilgrimTests.xctest */,
 			);
 			name = Products;
@@ -155,9 +155,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6B5B8C03258ABF2D00159D55 /* Pilgrim */ = {
+		6B5B8C03258ABF2D00159D55 /* PilgrimDI */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6B5B8C18258ABF2D00159D55 /* Build configuration list for PBXNativeTarget "Pilgrim" */;
+			buildConfigurationList = 6B5B8C18258ABF2D00159D55 /* Build configuration list for PBXNativeTarget "PilgrimDI" */;
 			buildPhases = (
 				6B5B8BFF258ABF2D00159D55 /* Headers */,
 				6B5B8C00258ABF2D00159D55 /* Sources */,
@@ -168,9 +168,9 @@
 			);
 			dependencies = (
 			);
-			name = Pilgrim;
+			name = PilgrimDI;
 			productName = Pilgrim;
-			productReference = 6B5B8C04258ABF2D00159D55 /* Pilgrim.framework */;
+			productReference = 6B5B8C04258ABF2D00159D55 /* PilgrimDI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6B5B8C0C258ABF2D00159D55 /* PilgrimTests */ = {
@@ -221,7 +221,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6B5B8C03258ABF2D00159D55 /* Pilgrim */,
+				6B5B8C03258ABF2D00159D55 /* PilgrimDI */,
 				6B5B8C0C258ABF2D00159D55 /* PilgrimTests */,
 			);
 		};
@@ -278,7 +278,7 @@
 /* Begin PBXTargetDependency section */
 		6B5B8C10258ABF2D00159D55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6B5B8C03258ABF2D00159D55 /* Pilgrim */;
+			target = 6B5B8C03258ABF2D00159D55 /* PilgrimDI */;
 			targetProxy = 6B5B8C0F258ABF2D00159D55 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -516,7 +516,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6B5B8C18258ABF2D00159D55 /* Build configuration list for PBXNativeTarget "Pilgrim" */ = {
+		6B5B8C18258ABF2D00159D55 /* Build configuration list for PBXNativeTarget "PilgrimDI" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6B5B8C19258ABF2D00159D55 /* Debug */,
