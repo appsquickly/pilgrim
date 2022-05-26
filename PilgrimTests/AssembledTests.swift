@@ -24,7 +24,7 @@
 
 import Foundation
 import XCTest
-@testable import Pilgrim
+@testable import PilgrimDI
 
 /**
  Tests the Assembled property wrapper

@@ -1,5 +1,5 @@
 import Foundation
-@testable import Pilgrim
+@testable import PilgrimDI
 
 class QuestAssembly: PilgrimAssembly {
 

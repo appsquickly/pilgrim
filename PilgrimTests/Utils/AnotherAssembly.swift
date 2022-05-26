@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 import Foundation
-import Pilgrim
+import PilgrimDI
 
 class AnotherAssembly : PilgrimAssembly {
 

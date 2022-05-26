@@ -23,7 +23,7 @@
  */
 
 import XCTest
-@testable import Pilgrim
+@testable import PilgrimDI
 
 final class PilgrimAssemblyTests: XCTestCase {
     var testFactory: TestAssembly!

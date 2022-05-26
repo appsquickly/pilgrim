@@ -22,7 +22,7 @@
  SOFTWARE.
  */
 
-@testable import Pilgrim
+@testable import PilgrimDI
 
 class TestAssembly: PilgrimAssembly {
     public func sharedA1() -> TestInstance {
