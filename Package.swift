@@ -8,17 +8,17 @@ let package = Package(
         .macOS(.v10_10)
     ],
 	products: [
-		.library(name: "PilgrimDI", targets: ["Pilgrim"])
+		.library(name: "PilgrimDI", targets: ["PilgrimDI"])
 	],
 	targets: [
 		.target(
-            name: "Pilgrim",
+            name: "PilgrimDI",
             dependencies: [],
             path: "Pilgrim"
         ),
 		.testTarget(
-            name: "PilgrimTests",
-            dependencies: ["Pilgrim"],
+            name: "PilgrimDITests",
+            dependencies: ["PilgrimDI"],
             path: "PilgrimTests"
         )
 	],
