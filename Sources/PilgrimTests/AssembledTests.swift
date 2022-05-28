@@ -29,31 +29,38 @@ import XCTest
 /**
  Tests the Assembled property wrapper
  */
-class AssembledTests : XCTestCase {
-
-    /**
-     Use this style when injecting by type
-    */
-    @Assembled(assembly: QuestAssembly.self) var knight: Knight
-
-    /**
-     * Say we have two classes that implement one protocol. In this case we can inject by key to get the desired one.
-     */
-    @Assembled(assembly: QuestAssembly.self) var quest: Quest
-
-    @Assembled(key: "damselQuest", assembly: QuestAssembly.self) var anotherQuest: Quest
+class AssembledTests: XCTestCase {
 
     func testKnightShouldBeAssembled() throws {
+
+        /**
+        Use this style when injecting by type
+        */
+        @Assembled(assembly: QuestAssembly.self) var knight: Knight
+
         XCTAssertNotNil(knight)
         XCTAssertEqual("The damsel is a comely fellow named Bruce, the knight is none other than the fearsome Fiona", knight.quest.describe())
     }
 
     func testQuestInjectionByType() throws {
+        /**
+        * Say we have two classes that implement one protocol. In this case we can inject by key to get the desired one.
+        */
+        @Assembled(assembly: QuestAssembly.self) var quest: Quest
+
         XCTAssertNotNil(quest)
     }
 
     func testQuestInjectionByKey() throws {
+
+        @Assembled(key: "damselQuest", assembly: QuestAssembly.self) var anotherQuest: Quest
+
         XCTAssertNotNil(anotherQuest)
+    }
+
+    func testInjectionWithGenericType() throws {
+        @Assembled(assembly: QuestAssembly.self) var castle: Castle<String>
+        XCTAssertNotNil(castle)
     }
 
 }

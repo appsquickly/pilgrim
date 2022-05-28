@@ -162,7 +162,8 @@ open class PilgrimAssembly {
 
     public final func makeInjectable(_ factory: @escaping () -> Any, byType: Any.Type) -> Void {
         let key = String(describing: byType).removingOptionalWrapper()
-        return bindings[key] = factory
+        bindings[key] = factory
+        print("Got key: \(key)")
     }
 
     public final func makeInjectable(_ factory: @escaping () -> Any, byKey: String) -> Void {

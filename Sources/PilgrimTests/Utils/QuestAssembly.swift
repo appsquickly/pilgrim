@@ -10,6 +10,7 @@ class QuestAssembly: PilgrimAssembly {
         makeInjectable(knight, byType: Knight.self)
         makeInjectable(holyGrailQuest, byType: Quest.self)
         makeInjectable(holyGrailQuest, byKey: "damselQuest")
+        makeInjectable(castle, byType: Castle<String>.self)
     }
 
     func knight() -> Knight {
@@ -28,5 +29,11 @@ class QuestAssembly: PilgrimAssembly {
      */
     func damselInDistressQuest() -> Quest {
         shared(DamselInDistressQuest())
+    }
+
+    func castle() -> Castle<String> {
+        shared {
+            Castle(name: "Tintagel", foo: "hello")
+        }
     }
 }
