@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
 #   s.social_media_url = 'https://twitter.com/doctor_cerulean'
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.10'
-  s.source_files     = 'Pilgrim/*.swift'
+  s.source_files     = 'Sources/Pilgrim/*.swift'
   s.swift_version = '5.1'
 end
