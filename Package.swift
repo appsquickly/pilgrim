@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "pilgrim",
     platforms: [
-        .iOS(.v14), .macOS(.v11), .tvOS(.v9),
+        .iOS(.v9), .macOS(.v10_10), .tvOS(.v9),
         .macCatalyst(.v13), .watchOS(.v2), .driverKit(.v19)
     ],
     products: [
